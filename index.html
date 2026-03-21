@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Pattern Recognition Map</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #0e0f14;
+  --bg2: #13151e;
+  --bg3: #1a1d28;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.18);
+  --text: #e8e9f0;
+  --text2: #8b8fa8;
+  --text3: #5a5e74;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.root {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.header { margin-bottom: 2rem; }
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #e8e9f0 30%, #7b82ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.subtitle { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+.search-row { display: flex; gap: 8px; margin-bottom: 1rem; }
+.search-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.search-row input::placeholder { color: var(--text3); }
+.search-row input:focus {
+  border-color: rgba(123,130,255,0.5);
+  box-shadow: 0 0 0 3px rgba(123,130,255,0.1);
+}
+
+.filter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+.chip {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 11px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  background: var(--bg2);
+  color: var(--text2);
+  transition: all .15s;
+  letter-spacing: 0.01em;
+}
+.chip:hover { border-color: var(--border-hover); color: var(--text); }
+
+.decider {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.decider-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+}
+.decider-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.dq {
+  font-size: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--bg3);
+  color: var(--text2);
+  text-align: left;
+  transition: all .15s;
+  line-height: 1.4;
+  font-family: inherit;
+}
+.dq:hover { border-color: var(--border-hover); color: var(--text); background: var(--bg2); }
+.dq strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.count { font-size: 12px; color: var(--text3); margin-bottom: .75rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 15px;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .15s;
+  background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0.85;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 1px var(--accent-border), 0 8px 32px var(--accent-glow);
+  transform: translateY(-2px);
+}
+.card.hidden { display: none; }
+
+.card-top { display: flex; align-items: center; gap: 9px; margin-bottom: 4px; margin-top: 4px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.card-name { font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: -0.1px; }
+.card-cat { font-size: 10px; color: var(--text3); font-weight: 500; margin-bottom: 7px; text-transform: uppercase; letter-spacing: .06em; }
+.card-clues { font-size: 11px; color: var(--text2); line-height: 1.55; margin-bottom: 9px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--accent-text);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  border: 1px solid var(--accent-tag-border);
+}
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 16px;
+  padding: 1.75rem;
+  max-width: 540px;
+  width: 100%;
+  max-height: 82vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+}
+.modal-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text2);
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.modal-close:hover { color: var(--text); border-color: var(--border-hover); }
+.modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.modal-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+.modal-title { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; }
+.modal-when { font-size: 13px; color: var(--text2); margin-bottom: 16px; line-height: 1.55; }
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin: 14px 0 7px;
+}
+.signal-list { display: flex; flex-direction: column; gap: 4px; }
+.signal-item {
+  font-size: 13px;
+  color: var(--text);
+  padding: 6px 11px;
+  background: var(--bg3);
+  border-radius: 7px;
+  border-left: 3px solid;
+  line-height: 1.4;
+}
+.prob-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.prob-pill {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  background: var(--bg3);
+  font-family: 'JetBrains Mono', monospace;
+}
+.hybrid-list { display: flex; flex-direction: column; gap: 5px; }
+.hybrid-item {
+  font-size: 12px;
+  color: var(--text2);
+  padding: 6px 11px;
+  background: var(--bg3);
+  border-radius: 7px;
+  line-height: 1.45;
+}
+.hybrid-item strong { color: var(--text); font-weight: 500; }
+.tip-box {
+  background: var(--bg3);
+  border-radius: 9px;
+  padding: 11px 13px;
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.65;
+  border-left: 3px solid;
+  margin-top: 14px;
+}
+.empty { text-align: center; padding: 2.5rem; color: var(--text3); font-size: 14px; grid-column: 1/-1; }
+@media(max-width:600px){ .decider-grid{ grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="header">
+    <h1>DSA Pattern Recognition Map</h1>
+    <p class="subtitle">Click any card for signals, tricks, and example problems &nbsp;·&nbsp; Use the quick-decision buttons to narrow by symptom</p>
+  </div>
+
+  <div class="search-row">
+    <input id="search" placeholder="Search patterns, signals, or problems..." oninput="filter()">
+  </div>
+
+  <div class="filter-row" id="chips"></div>
+
+  <div class="decider" id="decider">
+    <div class="decider-title">Quick decision — what does your problem look like?</div>
+    <div class="decider-grid" id="dqgrid"></div>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+
+  <div class="modal-backdrop" id="modal" onclick="closeModal(event)">
+    <div class="modal" id="modal-inner">
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PALETTE = {
+  hash:      { accent:"#8b7ff5", glow:"rgba(139,127,245,0.2)", bg:"rgba(139,127,245,0.09)", text:"#b8b0ff", tagBorder:"rgba(139,127,245,0.28)" },
+  twoptr:    { accent:"#22c98a", glow:"rgba(34,201,138,0.17)", bg:"rgba(34,201,138,0.08)", text:"#6ee4b5", tagBorder:"rgba(34,201,138,0.25)" },
+  sliding:   { accent:"#f07040", glow:"rgba(240,112,64,0.2)",  bg:"rgba(240,112,64,0.09)", text:"#ffaa80", tagBorder:"rgba(240,112,64,0.28)" },
+  stack:     { accent:"#e85c8a", glow:"rgba(232,92,138,0.2)",  bg:"rgba(232,92,138,0.09)", text:"#ff9ec0", tagBorder:"rgba(232,92,138,0.28)" },
+  binsearch: { accent:"#4c9ef5", glow:"rgba(76,158,245,0.2)",  bg:"rgba(76,158,245,0.09)", text:"#90c8ff", tagBorder:"rgba(76,158,245,0.28)" },
+  heap:      { accent:"#f0a030", glow:"rgba(240,160,48,0.2)",  bg:"rgba(240,160,48,0.09)", text:"#ffd080", tagBorder:"rgba(240,160,48,0.28)" },
+  linkedlist:{ accent:"#60c040", glow:"rgba(96,192,64,0.17)",  bg:"rgba(96,192,64,0.08)",  text:"#a0e880", tagBorder:"rgba(96,192,64,0.25)" },
+  trees:     { accent:"#a070f0", glow:"rgba(160,112,240,0.2)", bg:"rgba(160,112,240,0.09)", text:"#c8a0ff", tagBorder:"rgba(160,112,240,0.28)" },
+  graph:     { accent:"#20c890", glow:"rgba(32,200,144,0.17)", bg:"rgba(32,200,144,0.08)", text:"#70ddb8", tagBorder:"rgba(32,200,144,0.25)" },
+  advgraph:  { accent:"#18a878", glow:"rgba(24,168,120,0.17)", bg:"rgba(24,168,120,0.08)", text:"#50c898", tagBorder:"rgba(24,168,120,0.25)" },
+  backtrack: { accent:"#e04878", glow:"rgba(224,72,120,0.2)",  bg:"rgba(224,72,120,0.09)", text:"#ff88b8", tagBorder:"rgba(224,72,120,0.28)" },
+  dp1d:      { accent:"#80c830", glow:"rgba(128,200,48,0.17)", bg:"rgba(128,200,48,0.08)", text:"#b8e870", tagBorder:"rgba(128,200,48,0.25)" },
+  dp2d:      { accent:"#58a820", glow:"rgba(88,168,32,0.17)",  bg:"rgba(88,168,32,0.08)",  text:"#90d050", tagBorder:"rgba(88,168,32,0.25)" },
+  greedy:    { accent:"#e89830", glow:"rgba(232,152,48,0.2)",  bg:"rgba(232,152,48,0.09)", text:"#f8c870", tagBorder:"rgba(232,152,48,0.28)" },
+  intervals: { accent:"#d07828", glow:"rgba(208,120,40,0.2)",  bg:"rgba(208,120,40,0.09)", text:"#f0a850", tagBorder:"rgba(208,120,40,0.28)" },
+  trie:      { accent:"#8858e8", glow:"rgba(136,88,232,0.2)",  bg:"rgba(136,88,232,0.09)", text:"#c0a0ff", tagBorder:"rgba(136,88,232,0.28)" },
+  bits:      { accent:"#9898a8", glow:"rgba(152,152,168,0.17)", bg:"rgba(152,152,168,0.08)", text:"#c4c4d4", tagBorder:"rgba(152,152,168,0.25)" },
+  math:      { accent:"#5898c8", glow:"rgba(88,152,200,0.17)", bg:"rgba(88,152,200,0.08)", text:"#90c8e8", tagBorder:"rgba(88,152,200,0.25)" },
+};
+
+const CAT_COLORS = {
+  "Lookup & grouping":"#8b7ff5","Array / sorting":"#22c98a","Subarray / substring":"#f07040",
+  "Stack & next-greater":"#e85c8a","Sorted / monotonic":"#4c9ef5","Top-K & streams":"#f0a030",
+  "Pointer manipulation":"#60c040","Tree traversal":"#a070f0","Graph traversal":"#20c890",
+  "Combinatorics":"#e04878","Dynamic programming":"#80c830","Greedy & decisions":"#e89830",
+  "String structures":"#8858e8","Math & bits":"#5898c8"
+};
+
+const PATTERNS = [
+  { id:"hash", name:"Hash map / set", cat:"Lookup & grouping", when:"You need O(1) average lookup, counting, or grouping", signals:["duplicates","frequency counting","membership check","group by key","find complement in O(1)"], tricks:["Two Sum: store seen values and look up complement","Anagram: sort key or char-count key","Prefix+hash for subarray-sum problems"], hybrids:["Top K Frequent → hash + heap","Min Window Substring → sliding window + hash","Group Anagrams → hash with sorted key"], problems:["Two Sum","Contains Duplicate","Valid Anagram","Group Anagrams","Top K Frequent","Valid Sudoku","Longest Consecutive Sequence","Product of Array Except Self"], tip:"If the problem says 'O(1) lookup' or 'without sorting', think hash first." },
+  { id:"twoptr", name:"Two pointers", cat:"Array / sorting", when:"Sorted array, pair/triplet sum, palindrome, or optimize from both ends", signals:["sorted input","pair sum","triplet sum","palindrome check","shrink from both ends","no extra space"], tricks:["Sort first, then move pointers inward","3Sum: fix one, two-pointer on the rest","Trapping water: track running max from both sides"], hybrids:["Binary search is two pointers on sorted arrays","Merge sorted lists uses two pointers","Container With Most Water: greedy choice + two pointers"], problems:["Valid Palindrome","Two Sum II","3Sum","Container With Most Water","Trapping Rain Water","Remove Duplicates","Sort Colors"], tip:"'Sorted + pairs/triples + no extra space' almost always means two pointers." },
+  { id:"sliding", name:"Sliding window", cat:"Subarray / substring", when:"Contiguous subarray or substring with a dynamic condition", signals:["contiguous subarray","substring","longest/shortest window","at most k distinct","without repeating","contains all of X"], tricks:["Expand right, shrink left when condition breaks","Use a hash map to track window contents","Min/max window: shrink until valid, record answer"], hybrids:["Minimum Window Substring: sliding window + hash map","Top K: may combine with heap if frequency needed"], problems:["Best Time Buy & Sell","Longest Substring Without Repeating","Longest Repeating Char Replacement","Permutation in String","Minimum Window Substring","Sliding Window Maximum"], tip:"Contiguous + dynamic condition = sliding window. Fixed-size windows are easier; variable-size need shrink logic." },
+  { id:"stack", name:"Stack / monotonic stack", cat:"Stack & next-greater", when:"Bracket matching, undo order, next greater/smaller, or pending resolution", signals:["matching brackets","evaluate expression","next warmer day","next greater element","largest rectangle","undo/reverse evaluation"], tricks:["Monotonic stack: pop while top <= current (next greater) or >= (next smaller)","Min Stack: keep a parallel min-tracking stack","Histogram: pop and compute area on each taller bar"], hybrids:["Car Fleet: sort by position, stack arrival times","Evaluate RPN: pure stack, no monotonic trick needed"], problems:["Valid Parentheses","Min Stack","Evaluate Reverse Polish Notation","Daily Temperatures","Car Fleet","Largest Rectangle in Histogram","Asteroid Collision","Remove K Digits"], tip:"'When will this be resolved?' is the stack instinct. Push, process later, pop when resolved." },
+  { id:"binsearch", name:"Binary search", cat:"Sorted / monotonic", when:"Sorted data, rotated sorted array, or find min/max valid answer", signals:["sorted array","search rotated array","minimum X that satisfies","maximum X still valid","monotonic feasibility","answer space is numeric"], tricks:["Binary search on the answer, not the array","left mid = (lo+hi)//2, right mid = (lo+hi+1)//2","For feasibility: define a predicate and binary search on it"], hybrids:["Koko Bananas: binary search on rate + greedy feasibility","Time Based KV: binary search on timestamps"], problems:["Binary Search","Search 2D Matrix","Search Rotated Sorted Array","Find Min Rotated","Koko Eating Bananas","Capacity to Ship","Median of Two Sorted Arrays","Split Array Largest Sum"], tip:"'Smallest/largest valid value' is the binary-search-on-answer signal. Define predicate then search." },
+  { id:"heap", name:"Heap / priority queue", cat:"Top-K & streams", when:"Top-k, kth element, repeated min/max extraction, or stream of values", signals:["top k","kth largest","kth smallest","stream of values","repeatedly take min/max","schedule by priority"], tricks:["Min-heap of size k gives top-k (pop when > k)","Two heaps for running median: max-heap left, min-heap right","Task Scheduler: greedy + max-heap on frequency"], hybrids:["Meeting Rooms II: heap + interval sorting","Top K Frequent: hash + heap or bucket sort","Dijkstra: heap + graph"], problems:["Kth Largest in Stream","Last Stone Weight","K Closest Points","Kth Largest in Array","Task Scheduler","Find Median from Data Stream","Merge K Sorted Lists","IPO"], tip:"'Keep only the best k seen so far' = min-heap of size k." },
+  { id:"linkedlist", name:"Linked list", cat:"Pointer manipulation", when:"Reverse links, merge, cycle detection, nth-from-end, or reorder nodes", signals:["reverse a list","merge two lists","detect cycle","nth from end","reorder nodes","no extra space"], tricks:["Dummy head node avoids edge cases on head changes","Fast/slow pointers: slow at midpoint when fast hits end","Cycle start: reset one pointer to head after meeting"], hybrids:["Find Duplicate Number: Floyd cycle detection on array indices","Merge K Sorted Lists: heap + list pointers"], problems:["Reverse Linked List","Merge Two Sorted Lists","Remove Nth Node","Linked List Cycle","Reorder List","Add Two Numbers","LRU Cache","Find Duplicate"], tip:"'Cycle' or 'middle' = fast/slow pointers. 'Nth from end' = two pointers with n-gap." },
+  { id:"trees", name:"DFS / BFS (trees)", cat:"Tree traversal", when:"Tree path, height, subtree property, level traversal, or BST behavior", signals:["parent/child hierarchy","subtree","depth/height","root-to-leaf path","ancestor","level-by-level","BST sorted property"], tricks:["Inorder traversal of BST gives sorted order","DFS for path/height/subtree, BFS for level order","LCA: recurse left+right, return node when both sides found"], hybrids:["Serialize/deserialize: BFS + queue","Kth smallest BST: inorder count","Trie is a tree with character edges"], problems:["Invert Binary Tree","Max Depth","Same Tree","Subtree of Another","Level Order Traversal","Right Side View","Validate BST","Kth Smallest BST","Lowest Common Ancestor","Path Sum"], tip:"Level order = BFS. Path/height/subtree = DFS. BST property = inorder or binary search recursion." },
+  { id:"graph", name:"DFS / BFS (graphs)", cat:"Graph traversal", when:"Connected components, reachability, island counting, dependencies, or cycle detection", signals:["islands/connected components","neighbors/adjacency","grid traversal","reachability","prerequisites","dependencies","cycle in graph"], tricks:["Track visited set to avoid revisiting","BFS for unweighted shortest path","Topological sort: Kahn's (BFS) or DFS post-order"], hybrids:["Course Schedule: topo sort + cycle detection","Rotting Oranges: multi-source BFS","Clone Graph: BFS + hash map for cloning"], problems:["Number of Islands","Clone Graph","Max Area of Island","Pacific Atlantic","Surrounded Regions","Rotting Oranges","Course Schedule","Course Schedule II","Redundant Connection","Word Ladder"], tip:"Unweighted shortest path = BFS. Connectivity/components = DFS or BFS. Prerequisites/ordering = topological sort." },
+  { id:"advgraph", name:"Advanced graphs", cat:"Graph traversal", when:"Weighted shortest path, cheapest route, MST, or ordering from rules", signals:["weighted shortest path","cheapest flights","minimum spanning tree","connect all points","reconstruct order","alien dictionary"], tricks:["Dijkstra: min-heap, relax neighbors, visited set","Bellman-Ford for negative weights or k-hop constraints","Union-Find for MST (Kruskal) or redundant edges"], hybrids:["Cheapest Flights K Stops: Bellman-Ford k rounds","Swim Rising Water: Dijkstra or binary search + BFS"], problems:["Network Delay Time","Cheapest Flights K Stops","Min Cost Connect Points","Reconstruct Itinerary","Alien Dictionary","Swim in Rising Water"], tip:"Unweighted = BFS. Weighted positive = Dijkstra. Negative/k-hop = Bellman-Ford. Connect all = Kruskal/Prim." },
+  { id:"backtrack", name:"Backtracking", cat:"Combinatorics", when:"All combinations, subsets, permutations, or valid placements", signals:["all subsets","all combinations","all permutations","all valid boards","return all possible...","choice then recurse then undo"], tricks:["Sort input to prune duplicates early","Pass start index for combinations, used[] for permutations","Prune early: if remaining sum < 0 or invalid state"], hybrids:["Word Search II: trie + backtracking","Palindrome Partitioning: backtrack + DP for isPalin check","N-Queens: backtrack + O(1) column/diagonal sets"], problems:["Subsets","Combination Sum","Permutations","Subsets II","Combination Sum II","Word Search","Palindrome Partitioning","N-Queens","Letter Combos Phone"], tip:"'Return ALL possible ...' is the backtracking signal. Think: choose, explore, unchoose." },
+  { id:"dp1d", name:"1-D dynamic programming", cat:"Dynamic programming", when:"Best answer up to index i, count ways, take/skip decision, overlapping subproblems", signals:["count ways","at each index choose one of few options","subproblems repeat","optimize over prefix","can/can't reach"], tricks:["Define dp[i] clearly before coding","Climbing Stairs = Fibonacci","House Robber: dp[i] = max(dp[i-1], dp[i-2]+nums[i])","Coin Change: BFS on amounts or bottom-up DP"], hybrids:["Word Break: DP + set lookup","LIS: patience sort or DP + binary search for O(n log n)","Decode Ways: DP + string parsing"], problems:["Climbing Stairs","Min Cost Climbing Stairs","House Robber","House Robber II","Decode Ways","Coin Change","Word Break","LIS","Max Product Subarray","Partition Equal Subset Sum"], tip:"'At each index, best choice depends only on a few previous states' = 1-D DP." },
+  { id:"dp2d", name:"2-D dynamic programming", cat:"Dynamic programming", when:"Two strings, two indices, grid states, or interval-based choices", signals:["two strings","edit/match/interleave strings","grid path count","state depends on (i,j)","interval DP","partition array"], tricks:["LCS: dp[i][j] = dp[i-1][j-1]+1 if match, else max(...)","Edit Distance: insert/delete/replace at each cell","Unique Paths: dp[i][j] = dp[i-1][j] + dp[i][j-1]"], hybrids:["Burst Balloons: interval DP (think 'last balloon to pop')","Regular Expr Matching: 2-D DP on string + pattern"], problems:["Unique Paths","Longest Common Subsequence","Coin Change II","Target Sum","Interleaving String","Distinct Subsequences","Edit Distance","Burst Balloons","Regular Expression Matching"], tip:"State depends on two indices (i,j)? That's 2-D DP. Fill row by row." },
+  { id:"greedy", name:"Greedy", cat:"Greedy & decisions", when:"Local optimal choice is permanently safe — no backtracking needed", signals:["reachability","local choice stays optimal","one pass with best-so-far","interval scheduling","maximize by always picking best"], tricks:["Prove greedy is safe before coding — ask 'does local optimal hurt global?'","Jump Game: track farthest reachable, O(n) one pass","Gas Station: if total gas >= total cost, solution exists"], hybrids:["Interval scheduling: sort + greedy is classic","Dijkstra is greedy + heap","Task Scheduler: greedy frequency sort"], problems:["Maximum Subarray","Jump Game","Jump Game II","Gas Station","Partition Labels","Merge Triplets","Valid Parenthesis String","Assign Cookies","Candy"], tip:"Greedy is fast but only valid when you can prove a local choice can never hurt you globally." },
+  { id:"intervals", name:"Intervals", cat:"Greedy & decisions", when:"Overlapping time ranges, merging blocks, or resource allocation over time", signals:["overlapping ranges","meeting rooms","merge time blocks","insert and combine","non-overlapping subset","minimum resources"], tricks:["Sort by start time for merging / insertion","Sort by end time for scheduling (minimize overlaps)","Min rooms = max overlapping meetings at any moment (heap or sweep)"], hybrids:["Meeting Rooms II: interval sort + min-heap","Min Interval per Query: sort + heap + offline processing"], problems:["Insert Interval","Merge Intervals","Non-overlapping Intervals","Meeting Rooms","Meeting Rooms II","Min Interval to Include Query","Employee Free Time"], tip:"Intervals almost always start with sorting by start (for merging) or end (for scheduling)." },
+  { id:"trie", name:"Trie", cat:"String structures", when:"Prefix search, autocomplete, dictionary of words, or wildcard prefix matching", signals:["prefix lookup","autocomplete","dictionary of words","starts with","word search across many words"], tricks:["TrieNode has children dict + isEnd flag","Search vs startsWith differ only in where you check isEnd","Word Search II: build trie of words, DFS on grid"], hybrids:["Word Search II: trie + backtracking","Design Add and Search Words: trie + DFS for '.' wildcard"], problems:["Implement Trie","Design Add and Search Words","Word Search II","Replace Words","Longest Word in Dictionary"], tip:"Trie shines when you have many words and need prefix operations. Single-word checks — just use a set." },
+  { id:"bits", name:"Bit manipulation", cat:"Math & bits", when:"Unique item among duplicates, count set bits, XOR cancels pairs, no-extra-space tricks", signals:["exactly one unique","count set bits","XOR property","no extra space","sum without addition","missing number"], tricks:["a XOR a = 0, a XOR 0 = a — pairs cancel","n & (n-1) clears lowest set bit — use to count bits","Missing number in 0..n: XOR all indices and values"], hybrids:["Sum of Two Integers: bit simulation of full adder","Counting Bits: DP + bit trick dp[i] = dp[i>>1] + (i&1)"], problems:["Single Number","Number of 1 Bits","Counting Bits","Reverse Bits","Missing Number","Sum of Two Integers","Single Number II","Subsets (bitmask)"], tip:"XOR is the go-to for 'find unique among pairs'. Bit shifts for fast divide/multiply by 2." },
+  { id:"math", name:"Math & geometry", cat:"Math & bits", when:"Matrix transform, spiral traversal, coordinate geometry, or arithmetic without built-ins", signals:["rotate matrix","spiral order","set matrix zeroes","detect squares","multiply large numbers","happy number","power function"], tricks:["Rotate 90: transpose then reverse rows","Spiral: track boundaries (top/bottom/left/right), shrink each pass","Happy Number: Floyd cycle detection on digit-sum sequence"], hybrids:["Pow(x,n): fast exponentiation (divide and conquer)","Multiply Strings: grade-school multiplication on arrays"], problems:["Rotate Image","Spiral Matrix","Set Matrix Zeroes","Happy Number","Plus One","Pow(x,n)","Multiply Strings","Detect Squares"], tip:"Matrix rotations and spirals are simulation problems — track your boundaries carefully." },
+];
+
+const CATS = [...new Set(PATTERNS.map(p=>p.cat))];
+const DECIDER_QS = [
+  {q:"Contiguous subarray / substring?", ans:"sliding"},
+  {q:"Sorted input or sortable?", ans:"twoptr"},
+  {q:"Need O(1) lookup, counts, or grouping?", ans:"hash"},
+  {q:"Top-k or repeated min/max?", ans:"heap"},
+  {q:"All combinations / permutations?", ans:"backtrack"},
+  {q:"Subproblems repeat (best answer)?", ans:"dp1d"},
+  {q:"Tree, grid, or graph structure?", ans:"graph"},
+  {q:"Overlapping time ranges?", ans:"intervals"},
+];
+
+let activeFilter = "";
+
+function pal(id){ return PALETTE[id] || {accent:"#888",glow:"rgba(136,136,136,0.15)",bg:"rgba(136,136,136,0.07)",text:"#aaa",tagBorder:"rgba(136,136,136,0.2)"}; }
+
+function buildChips(){
+  const c = document.getElementById("chips");
+  const all = document.createElement("span");
+  all.className = "chip";
+  all.textContent = "All";
+  all.style.cssText = "background:#2a2d3e;color:#e8e9f0;border-color:rgba(255,255,255,0.2)";
+  all.dataset.all = "1";
+  all.onclick = () => setFilter("");
+  c.appendChild(all);
+  CATS.forEach(cat => {
+    const col = CAT_COLORS[cat] || "#888";
+    const sp = document.createElement("span");
+    sp.className = "chip";
+    sp.textContent = cat;
+    sp.dataset.cat = cat;
+    sp.style.cssText = `border-color:${col}33;color:var(--text2)`;
+    sp.onclick = () => setFilter(cat);
+    c.appendChild(sp);
+  });
+}
+
+function setFilter(cat){
+  activeFilter = cat;
+  document.querySelectorAll(".chip").forEach(c => {
+    if(c.dataset.all){
+      if(cat==="") { c.style.cssText="background:#2a2d3e;color:#e8e9f0;border-color:rgba(255,255,255,0.2)"; }
+      else { c.style.cssText="background:var(--bg2);color:var(--text2);border-color:var(--border)"; }
+    } else {
+      const cc = CAT_COLORS[c.dataset.cat] || "#888";
+      if(c.dataset.cat===cat){ c.style.cssText=`background:${cc}22;color:${cc};border-color:${cc}66`; }
+      else { c.style.cssText=`border-color:${cc}33;color:var(--text2);background:var(--bg2)`; }
+    }
+  });
+  filter();
+}
+
+function buildGrid(){
+  const g = document.getElementById("grid");
+  PATTERNS.forEach(p => {
+    const pl = pal(p.id);
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.id = p.id;
+    card.style.cssText = `--accent:${pl.accent};--accent-border:${pl.accent}55;--accent-glow:${pl.glow};--accent-bg:${pl.bg};--accent-text:${pl.text};--accent-tag-border:${pl.tagBorder}`;
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="dot" style="background:${pl.accent};box-shadow:0 0 8px ${pl.accent}"></div>
+        <span class="card-name">${p.name}</span>
+      </div>
+      <div class="card-cat">${p.cat}</div>
+      <div class="card-clues">${p.signals.slice(0,3).join(" &middot; ")}</div>
+      <div class="card-tags">${p.problems.slice(0,3).map(pr=>`<span class="tag">${pr}</span>`).join("")}</div>`;
+    card.onclick = () => openModal(p);
+    g.appendChild(card);
+  });
+}
+
+function buildDecider(){
+  const g = document.getElementById("dqgrid");
+  DECIDER_QS.forEach(({q, ans}) => {
+    const b = document.createElement("button");
+    b.className = "dq";
+    const pat = PATTERNS.find(p => p.id===ans || p.id.startsWith(ans));
+    const pl = pat ? pal(pat.id) : {accent:"#888"};
+    b.innerHTML = `<strong>${q}</strong><span style="color:${pl.accent}">${pat ? pat.name : ""}</span>`;
+    b.onclick = () => openModal(PATTERNS.find(p=>p.id===ans||p.id===ans+"1d")||PATTERNS.find(p=>p.id.startsWith(ans)));
+    g.appendChild(b);
+  });
+}
+
+function filter(){
+  const q = document.getElementById("search").value.toLowerCase();
+  let visible = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const p = PATTERNS.find(x => x.id===card.dataset.id);
+    const matchCat = !activeFilter || p.cat===activeFilter;
+    const matchQ = !q || (p.name+p.signals.join()+p.problems.join()+p.tricks.join()).toLowerCase().includes(q);
+    card.classList.toggle("hidden", !(matchCat&&matchQ));
+    if(matchCat&&matchQ) visible++;
+  });
+  const em = document.querySelector(".empty");
+  if(em) em.remove();
+  if(visible===0){
+    const d = document.createElement("div"); d.className="empty"; d.textContent="No patterns match — try a different search.";
+    document.getElementById("grid").appendChild(d);
+  }
+  document.getElementById("count").textContent = `Showing ${visible} of ${PATTERNS.length} patterns`;
+  document.getElementById("decider").style.display = q ? "none" : "";
+}
+
+function openModal(p){
+  if(!p) return;
+  const pl = pal(p.id);
+  const col = pl.accent;
+  document.getElementById("modal-content").innerHTML = `
+    <div class="modal-header">
+      <div class="modal-dot" style="background:${col};box-shadow:0 0 12px ${col}88"></div>
+      <div class="modal-title">${p.name}</div>
+    </div>
+    <div class="modal-when">${p.when}</div>
+    <div class="section-label">Signals to look for</div>
+    <div class="signal-list">${p.signals.map(s=>`<div class="signal-item" style="border-left-color:${col}">${s}</div>`).join("")}</div>
+    <div class="section-label">Key tricks</div>
+    <div class="signal-list">${p.tricks.map(s=>`<div class="signal-item" style="border-left-color:${col}88">${s}</div>`).join("")}</div>
+    <div class="section-label">Common problems</div>
+    <div class="prob-list">${p.problems.map(pr=>`<span class="prob-pill" style="border-color:${col}44;color:${pl.text}">${pr}</span>`).join("")}</div>
+    ${p.hybrids.length?`<div class="section-label">Hybrid patterns</div>
+    <div class="hybrid-list">${p.hybrids.map(h=>{const[name,...rest]=h.split(":");return`<div class="hybrid-item"><strong>${name}</strong>${rest.length?": "+rest.join(":"):""}</div>`;}).join("")}</div>`:""}
+    <div class="tip-box" style="border-left-color:${col}">${p.tip}</div>`;
+  document.getElementById("modal").classList.add("open");
+}
+
+function closeModal(e){
+  if(!e || e.target===document.getElementById("modal")){
+    document.getElementById("modal").classList.remove("open");
+  }
+}
+
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeModal(); });
+buildChips(); buildDecider(); buildGrid();
+document.getElementById("count").textContent = `Showing ${PATTERNS.length} of ${PATTERNS.length} patterns`;
+</script>
+</body>
+</html>
