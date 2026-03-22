@@ -40,120 +40,56 @@ body::before {
   z-index: 0;
 }
 
-.root {
-  position: relative;
-  z-index: 1;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem;
-}
+.root { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 2.5rem 1.5rem; }
 
 .header { margin-bottom: 2rem; }
 h1 {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-size: 26px; font-weight: 600; letter-spacing: -0.5px;
   background: linear-gradient(135deg, #e8e9f0 30%, #7b82ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   margin-bottom: 6px;
 }
 .subtitle { font-size: 13px; color: var(--text2); line-height: 1.6; }
 
 .search-row { display: flex; gap: 8px; margin-bottom: 1rem; }
 .search-row input {
-  flex: 1;
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg2);
-  color: var(--text);
-  font-size: 14px;
-  font-family: inherit;
-  outline: none;
+  flex: 1; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg2); color: var(--text); font-size: 14px; font-family: inherit; outline: none;
   transition: border-color .2s, box-shadow .2s;
 }
 .search-row input::placeholder { color: var(--text3); }
-.search-row input:focus {
-  border-color: rgba(123,130,255,0.5);
-  box-shadow: 0 0 0 3px rgba(123,130,255,0.1);
-}
+.search-row input:focus { border-color: rgba(123,130,255,0.5); box-shadow: 0 0 0 3px rgba(123,130,255,0.1); }
 
 .filter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
 .chip {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 5px 11px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  background: var(--bg2);
-  color: var(--text2);
-  transition: all .15s;
-  letter-spacing: 0.01em;
+  font-size: 11px; font-weight: 500; padding: 5px 11px; border-radius: 20px;
+  border: 1px solid var(--border); cursor: pointer; background: var(--bg2);
+  color: var(--text2); transition: all .15s; letter-spacing: 0.01em;
 }
 .chip:hover { border-color: var(--border-hover); color: var(--text); }
 
-.decider {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.1rem 1.25rem;
-  margin-bottom: 1.5rem;
-}
-.decider-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin-bottom: 10px;
-}
+.decider { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 1.5rem; }
+.decider-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
 .decider-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .dq {
-  font-size: 12px;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  cursor: pointer;
-  background: var(--bg3);
-  color: var(--text2);
-  text-align: left;
-  transition: all .15s;
-  line-height: 1.4;
-  font-family: inherit;
+  font-size: 12px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;
+  cursor: pointer; background: var(--bg3); color: var(--text2); text-align: left;
+  transition: all .15s; line-height: 1.4; font-family: inherit;
 }
 .dq:hover { border-color: var(--border-hover); color: var(--text); background: var(--bg2); }
-.dq strong {
-  display: block;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 2px;
-}
+.dq strong { display: block; font-size: 11px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
 
 .count { font-size: 12px; color: var(--text3); margin-bottom: .75rem; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
 
 .card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 15px;
-  cursor: pointer;
-  transition: border-color .2s, box-shadow .2s, transform .15s;
-  background: var(--bg2);
-  position: relative;
-  overflow: hidden;
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 15px;
+  cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .15s;
+  background: var(--bg2); position: relative; overflow: hidden;
 }
 .card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--accent);
-  opacity: 0.85;
-  border-radius: var(--radius) var(--radius) 0 0;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); opacity: 0.85; border-radius: var(--radius) var(--radius) 0 0;
 }
 .card:hover {
   border-color: var(--accent-border);
@@ -169,106 +105,72 @@ h1 {
 .card-clues { font-size: 11px; color: var(--text2); line-height: 1.55; margin-bottom: 9px; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 .tag {
-  font-size: 10px;
-  padding: 2px 7px;
-  border-radius: 6px;
-  background: var(--accent-bg);
-  color: var(--accent-text);
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 500;
-  border: 1px solid var(--accent-tag-border);
+  font-size: 10px; padding: 2px 7px; border-radius: 6px;
+  background: var(--accent-bg); color: var(--accent-text);
+  font-family: 'JetBrains Mono', monospace; font-weight: 500; border: 1px solid var(--accent-tag-border);
 }
 
+/* Modal */
 .modal-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.72);
-  backdrop-filter: blur(4px);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,.72);
+  backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 1rem;
 }
 .modal-backdrop.open { display: flex; }
 .modal {
-  background: var(--bg2);
-  border: 1px solid var(--border-hover);
-  border-radius: 16px;
-  padding: 1.75rem;
-  max-width: 540px;
-  width: 100%;
-  max-height: 82vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  background: var(--bg2); border: 1px solid var(--border-hover); border-radius: 16px;
+  padding: 0; max-width: 580px; width: 100%; max-height: 88vh; overflow: hidden;
+  position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.6); display: flex; flex-direction: column;
 }
 .modal-close {
-  position: absolute;
-  top: 14px; right: 16px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  color: var(--text2);
-  width: 28px; height: 28px;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .15s;
+  position: absolute; top: 14px; right: 16px; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 6px; font-size: 14px; cursor: pointer; color: var(--text2);
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; transition: all .15s; z-index: 2;
 }
 .modal-close:hover { color: var(--text); border-color: var(--border-hover); }
+
+/* Tabs */
+.modal-tabs { display: flex; border-bottom: 1px solid var(--border); padding: 0 1.75rem; flex-shrink: 0; }
+.tab-btn {
+  font-size: 12px; font-weight: 500; padding: 14px 0; margin-right: 20px;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; color: var(--text3); font-family: inherit; transition: all .15s; letter-spacing: .02em;
+}
+.tab-btn:hover { color: var(--text2); }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--modal-accent, #7b82ff); }
+
+.modal-body { overflow-y: auto; flex: 1; padding: 1.5rem 1.75rem 1.75rem; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
 .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 .modal-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
 .modal-title { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; }
 .modal-when { font-size: 13px; color: var(--text2); margin-bottom: 16px; line-height: 1.55; }
-.section-label {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin: 14px 0 7px;
-}
+.section-label { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin: 14px 0 7px; }
 .signal-list { display: flex; flex-direction: column; gap: 4px; }
-.signal-item {
-  font-size: 13px;
-  color: var(--text);
-  padding: 6px 11px;
-  background: var(--bg3);
-  border-radius: 7px;
-  border-left: 3px solid;
-  line-height: 1.4;
-}
+.signal-item { font-size: 13px; color: var(--text); padding: 6px 11px; background: var(--bg3); border-radius: 7px; border-left: 3px solid; line-height: 1.4; }
 .prob-list { display: flex; flex-wrap: wrap; gap: 6px; }
-.prob-pill {
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  color: var(--text2);
-  background: var(--bg3);
-  font-family: 'JetBrains Mono', monospace;
-}
+.prob-pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); color: var(--text2); background: var(--bg3); font-family: 'JetBrains Mono', monospace; }
 .hybrid-list { display: flex; flex-direction: column; gap: 5px; }
-.hybrid-item {
-  font-size: 12px;
-  color: var(--text2);
-  padding: 6px 11px;
-  background: var(--bg3);
-  border-radius: 7px;
-  line-height: 1.45;
-}
+.hybrid-item { font-size: 12px; color: var(--text2); padding: 6px 11px; background: var(--bg3); border-radius: 7px; line-height: 1.45; }
 .hybrid-item strong { color: var(--text); font-weight: 500; }
-.tip-box {
-  background: var(--bg3);
-  border-radius: 9px;
-  padding: 11px 13px;
-  font-size: 12.5px;
-  color: var(--text2);
-  line-height: 1.65;
-  border-left: 3px solid;
-  margin-top: 14px;
-}
+.tip-box { background: var(--bg3); border-radius: 9px; padding: 11px 13px; font-size: 12.5px; color: var(--text2); line-height: 1.65; border-left: 3px solid; margin-top: 14px; }
+
+/* Thinking panel */
+.q-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.q-item { background: var(--bg3); border-radius: 10px; padding: 12px 14px; border: 1px solid var(--border); }
+.q-num { font-size: 10px; font-weight: 600; color: var(--modal-accent, #7b82ff); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+.q-text { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+.q-hints { display: flex; flex-direction: column; gap: 3px; }
+.q-hint { font-size: 12px; color: var(--text2); padding-left: 12px; position: relative; line-height: 1.45; }
+.q-hint::before { content: '›'; position: absolute; left: 0; color: var(--modal-accent, #7b82ff); }
+
+.checklist-box { background: var(--bg3); border-radius: 10px; padding: 14px 16px; border: 1px solid var(--border); border-left: 3px solid var(--modal-accent, #7b82ff); }
+.checklist-title { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.checklist-items { display: flex; flex-direction: column; gap: 6px; }
+.cl-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: var(--text2); line-height: 1.4; }
+.cl-num { font-size: 10px; font-weight: 600; color: var(--modal-accent, #7b82ff); font-family: 'JetBrains Mono', monospace; min-width: 18px; margin-top: 1px; }
+
 .empty { text-align: center; padding: 2.5rem; color: var(--text3); font-size: 14px; grid-column: 1/-1; }
 @media(max-width:600px){ .decider-grid{ grid-template-columns:1fr } }
 </style>
@@ -277,7 +179,7 @@ h1 {
 <div class="root">
   <div class="header">
     <h1>DSA Pattern Recognition Map</h1>
-    <p class="subtitle">Click any card for signals, tricks, and example problems &nbsp;·&nbsp; Use the quick-decision buttons to narrow by symptom</p>
+    <p class="subtitle">Click any card for signals, tricks, and a step-by-step thinking guide &nbsp;·&nbsp; Use the quick-decision buttons to narrow by symptom</p>
   </div>
 
   <div class="search-row">
@@ -297,31 +199,38 @@ h1 {
   <div class="modal-backdrop" id="modal" onclick="closeModal(event)">
     <div class="modal" id="modal-inner">
       <button class="modal-close" onclick="closeModal()">&#10005;</button>
-      <div id="modal-content"></div>
+      <div class="modal-tabs" id="modal-tabs">
+        <button class="tab-btn active" onclick="switchTab('overview',this)">Overview</button>
+        <button class="tab-btn" onclick="switchTab('thinking',this)">How to think</button>
+      </div>
+      <div class="modal-body">
+        <div id="tab-overview" class="tab-panel active"></div>
+        <div id="tab-thinking" class="tab-panel"></div>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
 const PALETTE = {
-  hash:      { accent:"#8b7ff5", glow:"rgba(139,127,245,0.2)", bg:"rgba(139,127,245,0.09)", text:"#b8b0ff", tagBorder:"rgba(139,127,245,0.28)" },
-  twoptr:    { accent:"#22c98a", glow:"rgba(34,201,138,0.17)", bg:"rgba(34,201,138,0.08)", text:"#6ee4b5", tagBorder:"rgba(34,201,138,0.25)" },
-  sliding:   { accent:"#f07040", glow:"rgba(240,112,64,0.2)",  bg:"rgba(240,112,64,0.09)", text:"#ffaa80", tagBorder:"rgba(240,112,64,0.28)" },
-  stack:     { accent:"#e85c8a", glow:"rgba(232,92,138,0.2)",  bg:"rgba(232,92,138,0.09)", text:"#ff9ec0", tagBorder:"rgba(232,92,138,0.28)" },
-  binsearch: { accent:"#4c9ef5", glow:"rgba(76,158,245,0.2)",  bg:"rgba(76,158,245,0.09)", text:"#90c8ff", tagBorder:"rgba(76,158,245,0.28)" },
-  heap:      { accent:"#f0a030", glow:"rgba(240,160,48,0.2)",  bg:"rgba(240,160,48,0.09)", text:"#ffd080", tagBorder:"rgba(240,160,48,0.28)" },
-  linkedlist:{ accent:"#60c040", glow:"rgba(96,192,64,0.17)",  bg:"rgba(96,192,64,0.08)",  text:"#a0e880", tagBorder:"rgba(96,192,64,0.25)" },
-  trees:     { accent:"#a070f0", glow:"rgba(160,112,240,0.2)", bg:"rgba(160,112,240,0.09)", text:"#c8a0ff", tagBorder:"rgba(160,112,240,0.28)" },
-  graph:     { accent:"#20c890", glow:"rgba(32,200,144,0.17)", bg:"rgba(32,200,144,0.08)", text:"#70ddb8", tagBorder:"rgba(32,200,144,0.25)" },
-  advgraph:  { accent:"#18a878", glow:"rgba(24,168,120,0.17)", bg:"rgba(24,168,120,0.08)", text:"#50c898", tagBorder:"rgba(24,168,120,0.25)" },
-  backtrack: { accent:"#e04878", glow:"rgba(224,72,120,0.2)",  bg:"rgba(224,72,120,0.09)", text:"#ff88b8", tagBorder:"rgba(224,72,120,0.28)" },
-  dp1d:      { accent:"#80c830", glow:"rgba(128,200,48,0.17)", bg:"rgba(128,200,48,0.08)", text:"#b8e870", tagBorder:"rgba(128,200,48,0.25)" },
-  dp2d:      { accent:"#58a820", glow:"rgba(88,168,32,0.17)",  bg:"rgba(88,168,32,0.08)",  text:"#90d050", tagBorder:"rgba(88,168,32,0.25)" },
-  greedy:    { accent:"#e89830", glow:"rgba(232,152,48,0.2)",  bg:"rgba(232,152,48,0.09)", text:"#f8c870", tagBorder:"rgba(232,152,48,0.28)" },
-  intervals: { accent:"#d07828", glow:"rgba(208,120,40,0.2)",  bg:"rgba(208,120,40,0.09)", text:"#f0a850", tagBorder:"rgba(208,120,40,0.28)" },
-  trie:      { accent:"#8858e8", glow:"rgba(136,88,232,0.2)",  bg:"rgba(136,88,232,0.09)", text:"#c0a0ff", tagBorder:"rgba(136,88,232,0.28)" },
+  hash:      { accent:"#8b7ff5", glow:"rgba(139,127,245,0.2)",  bg:"rgba(139,127,245,0.09)", text:"#b8b0ff", tagBorder:"rgba(139,127,245,0.28)" },
+  twoptr:    { accent:"#22c98a", glow:"rgba(34,201,138,0.17)",  bg:"rgba(34,201,138,0.08)",  text:"#6ee4b5", tagBorder:"rgba(34,201,138,0.25)" },
+  sliding:   { accent:"#f07040", glow:"rgba(240,112,64,0.2)",   bg:"rgba(240,112,64,0.09)",  text:"#ffaa80", tagBorder:"rgba(240,112,64,0.28)" },
+  stack:     { accent:"#e85c8a", glow:"rgba(232,92,138,0.2)",   bg:"rgba(232,92,138,0.09)",  text:"#ff9ec0", tagBorder:"rgba(232,92,138,0.28)" },
+  binsearch: { accent:"#4c9ef5", glow:"rgba(76,158,245,0.2)",   bg:"rgba(76,158,245,0.09)",  text:"#90c8ff", tagBorder:"rgba(76,158,245,0.28)" },
+  heap:      { accent:"#f0a030", glow:"rgba(240,160,48,0.2)",   bg:"rgba(240,160,48,0.09)",  text:"#ffd080", tagBorder:"rgba(240,160,48,0.28)" },
+  linkedlist:{ accent:"#60c040", glow:"rgba(96,192,64,0.17)",   bg:"rgba(96,192,64,0.08)",   text:"#a0e880", tagBorder:"rgba(96,192,64,0.25)" },
+  trees:     { accent:"#a070f0", glow:"rgba(160,112,240,0.2)",  bg:"rgba(160,112,240,0.09)", text:"#c8a0ff", tagBorder:"rgba(160,112,240,0.28)" },
+  graph:     { accent:"#20c890", glow:"rgba(32,200,144,0.17)",  bg:"rgba(32,200,144,0.08)",  text:"#70ddb8", tagBorder:"rgba(32,200,144,0.25)" },
+  advgraph:  { accent:"#18a878", glow:"rgba(24,168,120,0.17)",  bg:"rgba(24,168,120,0.08)",  text:"#50c898", tagBorder:"rgba(24,168,120,0.25)" },
+  backtrack: { accent:"#e04878", glow:"rgba(224,72,120,0.2)",   bg:"rgba(224,72,120,0.09)",  text:"#ff88b8", tagBorder:"rgba(224,72,120,0.28)" },
+  dp1d:      { accent:"#80c830", glow:"rgba(128,200,48,0.17)",  bg:"rgba(128,200,48,0.08)",  text:"#b8e870", tagBorder:"rgba(128,200,48,0.25)" },
+  dp2d:      { accent:"#58a820", glow:"rgba(88,168,32,0.17)",   bg:"rgba(88,168,32,0.08)",   text:"#90d050", tagBorder:"rgba(88,168,32,0.25)" },
+  greedy:    { accent:"#e89830", glow:"rgba(232,152,48,0.2)",   bg:"rgba(232,152,48,0.09)",  text:"#f8c870", tagBorder:"rgba(232,152,48,0.28)" },
+  intervals: { accent:"#d07828", glow:"rgba(208,120,40,0.2)",   bg:"rgba(208,120,40,0.09)",  text:"#f0a850", tagBorder:"rgba(208,120,40,0.28)" },
+  trie:      { accent:"#8858e8", glow:"rgba(136,88,232,0.2)",   bg:"rgba(136,88,232,0.09)",  text:"#c0a0ff", tagBorder:"rgba(136,88,232,0.28)" },
   bits:      { accent:"#9898a8", glow:"rgba(152,152,168,0.17)", bg:"rgba(152,152,168,0.08)", text:"#c4c4d4", tagBorder:"rgba(152,152,168,0.25)" },
-  math:      { accent:"#5898c8", glow:"rgba(88,152,200,0.17)", bg:"rgba(88,152,200,0.08)", text:"#90c8e8", tagBorder:"rgba(88,152,200,0.25)" },
+  math:      { accent:"#5898c8", glow:"rgba(88,152,200,0.17)",  bg:"rgba(88,152,200,0.08)",  text:"#90c8e8", tagBorder:"rgba(88,152,200,0.25)" },
 };
 
 const CAT_COLORS = {
@@ -333,24 +242,312 @@ const CAT_COLORS = {
 };
 
 const PATTERNS = [
-  { id:"hash", name:"Hash map / set", cat:"Lookup & grouping", when:"You need O(1) average lookup, counting, or grouping", signals:["duplicates","frequency counting","membership check","group by key","find complement in O(1)"], tricks:["Two Sum: store seen values and look up complement","Anagram: sort key or char-count key","Prefix+hash for subarray-sum problems"], hybrids:["Top K Frequent → hash + heap","Min Window Substring → sliding window + hash","Group Anagrams → hash with sorted key"], problems:["Two Sum","Contains Duplicate","Valid Anagram","Group Anagrams","Top K Frequent","Valid Sudoku","Longest Consecutive Sequence","Product of Array Except Self"], tip:"If the problem says 'O(1) lookup' or 'without sorting', think hash first." },
-  { id:"twoptr", name:"Two pointers", cat:"Array / sorting", when:"Sorted array, pair/triplet sum, palindrome, or optimize from both ends", signals:["sorted input","pair sum","triplet sum","palindrome check","shrink from both ends","no extra space"], tricks:["Sort first, then move pointers inward","3Sum: fix one, two-pointer on the rest","Trapping water: track running max from both sides"], hybrids:["Binary search is two pointers on sorted arrays","Merge sorted lists uses two pointers","Container With Most Water: greedy choice + two pointers"], problems:["Valid Palindrome","Two Sum II","3Sum","Container With Most Water","Trapping Rain Water","Remove Duplicates","Sort Colors"], tip:"'Sorted + pairs/triples + no extra space' almost always means two pointers." },
-  { id:"sliding", name:"Sliding window", cat:"Subarray / substring", when:"Contiguous subarray or substring with a dynamic condition", signals:["contiguous subarray","substring","longest/shortest window","at most k distinct","without repeating","contains all of X"], tricks:["Expand right, shrink left when condition breaks","Use a hash map to track window contents","Min/max window: shrink until valid, record answer"], hybrids:["Minimum Window Substring: sliding window + hash map","Top K: may combine with heap if frequency needed"], problems:["Best Time Buy & Sell","Longest Substring Without Repeating","Longest Repeating Char Replacement","Permutation in String","Minimum Window Substring","Sliding Window Maximum"], tip:"Contiguous + dynamic condition = sliding window. Fixed-size windows are easier; variable-size need shrink logic." },
-  { id:"stack", name:"Stack / monotonic stack", cat:"Stack & next-greater", when:"Bracket matching, undo order, next greater/smaller, or pending resolution", signals:["matching brackets","evaluate expression","next warmer day","next greater element","largest rectangle","undo/reverse evaluation"], tricks:["Monotonic stack: pop while top <= current (next greater) or >= (next smaller)","Min Stack: keep a parallel min-tracking stack","Histogram: pop and compute area on each taller bar"], hybrids:["Car Fleet: sort by position, stack arrival times","Evaluate RPN: pure stack, no monotonic trick needed"], problems:["Valid Parentheses","Min Stack","Evaluate Reverse Polish Notation","Daily Temperatures","Car Fleet","Largest Rectangle in Histogram","Asteroid Collision","Remove K Digits"], tip:"'When will this be resolved?' is the stack instinct. Push, process later, pop when resolved." },
-  { id:"binsearch", name:"Binary search", cat:"Sorted / monotonic", when:"Sorted data, rotated sorted array, or find min/max valid answer", signals:["sorted array","search rotated array","minimum X that satisfies","maximum X still valid","monotonic feasibility","answer space is numeric"], tricks:["Binary search on the answer, not the array","left mid = (lo+hi)//2, right mid = (lo+hi+1)//2","For feasibility: define a predicate and binary search on it"], hybrids:["Koko Bananas: binary search on rate + greedy feasibility","Time Based KV: binary search on timestamps"], problems:["Binary Search","Search 2D Matrix","Search Rotated Sorted Array","Find Min Rotated","Koko Eating Bananas","Capacity to Ship","Median of Two Sorted Arrays","Split Array Largest Sum"], tip:"'Smallest/largest valid value' is the binary-search-on-answer signal. Define predicate then search." },
-  { id:"heap", name:"Heap / priority queue", cat:"Top-K & streams", when:"Top-k, kth element, repeated min/max extraction, or stream of values", signals:["top k","kth largest","kth smallest","stream of values","repeatedly take min/max","schedule by priority"], tricks:["Min-heap of size k gives top-k (pop when > k)","Two heaps for running median: max-heap left, min-heap right","Task Scheduler: greedy + max-heap on frequency"], hybrids:["Meeting Rooms II: heap + interval sorting","Top K Frequent: hash + heap or bucket sort","Dijkstra: heap + graph"], problems:["Kth Largest in Stream","Last Stone Weight","K Closest Points","Kth Largest in Array","Task Scheduler","Find Median from Data Stream","Merge K Sorted Lists","IPO"], tip:"'Keep only the best k seen so far' = min-heap of size k." },
-  { id:"linkedlist", name:"Linked list", cat:"Pointer manipulation", when:"Reverse links, merge, cycle detection, nth-from-end, or reorder nodes", signals:["reverse a list","merge two lists","detect cycle","nth from end","reorder nodes","no extra space"], tricks:["Dummy head node avoids edge cases on head changes","Fast/slow pointers: slow at midpoint when fast hits end","Cycle start: reset one pointer to head after meeting"], hybrids:["Find Duplicate Number: Floyd cycle detection on array indices","Merge K Sorted Lists: heap + list pointers"], problems:["Reverse Linked List","Merge Two Sorted Lists","Remove Nth Node","Linked List Cycle","Reorder List","Add Two Numbers","LRU Cache","Find Duplicate"], tip:"'Cycle' or 'middle' = fast/slow pointers. 'Nth from end' = two pointers with n-gap." },
-  { id:"trees", name:"DFS / BFS (trees)", cat:"Tree traversal", when:"Tree path, height, subtree property, level traversal, or BST behavior", signals:["parent/child hierarchy","subtree","depth/height","root-to-leaf path","ancestor","level-by-level","BST sorted property"], tricks:["Inorder traversal of BST gives sorted order","DFS for path/height/subtree, BFS for level order","LCA: recurse left+right, return node when both sides found"], hybrids:["Serialize/deserialize: BFS + queue","Kth smallest BST: inorder count","Trie is a tree with character edges"], problems:["Invert Binary Tree","Max Depth","Same Tree","Subtree of Another","Level Order Traversal","Right Side View","Validate BST","Kth Smallest BST","Lowest Common Ancestor","Path Sum"], tip:"Level order = BFS. Path/height/subtree = DFS. BST property = inorder or binary search recursion." },
-  { id:"graph", name:"DFS / BFS (graphs)", cat:"Graph traversal", when:"Connected components, reachability, island counting, dependencies, or cycle detection", signals:["islands/connected components","neighbors/adjacency","grid traversal","reachability","prerequisites","dependencies","cycle in graph"], tricks:["Track visited set to avoid revisiting","BFS for unweighted shortest path","Topological sort: Kahn's (BFS) or DFS post-order"], hybrids:["Course Schedule: topo sort + cycle detection","Rotting Oranges: multi-source BFS","Clone Graph: BFS + hash map for cloning"], problems:["Number of Islands","Clone Graph","Max Area of Island","Pacific Atlantic","Surrounded Regions","Rotting Oranges","Course Schedule","Course Schedule II","Redundant Connection","Word Ladder"], tip:"Unweighted shortest path = BFS. Connectivity/components = DFS or BFS. Prerequisites/ordering = topological sort." },
-  { id:"advgraph", name:"Advanced graphs", cat:"Graph traversal", when:"Weighted shortest path, cheapest route, MST, or ordering from rules", signals:["weighted shortest path","cheapest flights","minimum spanning tree","connect all points","reconstruct order","alien dictionary"], tricks:["Dijkstra: min-heap, relax neighbors, visited set","Bellman-Ford for negative weights or k-hop constraints","Union-Find for MST (Kruskal) or redundant edges"], hybrids:["Cheapest Flights K Stops: Bellman-Ford k rounds","Swim Rising Water: Dijkstra or binary search + BFS"], problems:["Network Delay Time","Cheapest Flights K Stops","Min Cost Connect Points","Reconstruct Itinerary","Alien Dictionary","Swim in Rising Water"], tip:"Unweighted = BFS. Weighted positive = Dijkstra. Negative/k-hop = Bellman-Ford. Connect all = Kruskal/Prim." },
-  { id:"backtrack", name:"Backtracking", cat:"Combinatorics", when:"All combinations, subsets, permutations, or valid placements", signals:["all subsets","all combinations","all permutations","all valid boards","return all possible...","choice then recurse then undo"], tricks:["Sort input to prune duplicates early","Pass start index for combinations, used[] for permutations","Prune early: if remaining sum < 0 or invalid state"], hybrids:["Word Search II: trie + backtracking","Palindrome Partitioning: backtrack + DP for isPalin check","N-Queens: backtrack + O(1) column/diagonal sets"], problems:["Subsets","Combination Sum","Permutations","Subsets II","Combination Sum II","Word Search","Palindrome Partitioning","N-Queens","Letter Combos Phone"], tip:"'Return ALL possible ...' is the backtracking signal. Think: choose, explore, unchoose." },
-  { id:"dp1d", name:"1-D dynamic programming", cat:"Dynamic programming", when:"Best answer up to index i, count ways, take/skip decision, overlapping subproblems", signals:["count ways","at each index choose one of few options","subproblems repeat","optimize over prefix","can/can't reach"], tricks:["Define dp[i] clearly before coding","Climbing Stairs = Fibonacci","House Robber: dp[i] = max(dp[i-1], dp[i-2]+nums[i])","Coin Change: BFS on amounts or bottom-up DP"], hybrids:["Word Break: DP + set lookup","LIS: patience sort or DP + binary search for O(n log n)","Decode Ways: DP + string parsing"], problems:["Climbing Stairs","Min Cost Climbing Stairs","House Robber","House Robber II","Decode Ways","Coin Change","Word Break","LIS","Max Product Subarray","Partition Equal Subset Sum"], tip:"'At each index, best choice depends only on a few previous states' = 1-D DP." },
-  { id:"dp2d", name:"2-D dynamic programming", cat:"Dynamic programming", when:"Two strings, two indices, grid states, or interval-based choices", signals:["two strings","edit/match/interleave strings","grid path count","state depends on (i,j)","interval DP","partition array"], tricks:["LCS: dp[i][j] = dp[i-1][j-1]+1 if match, else max(...)","Edit Distance: insert/delete/replace at each cell","Unique Paths: dp[i][j] = dp[i-1][j] + dp[i][j-1]"], hybrids:["Burst Balloons: interval DP (think 'last balloon to pop')","Regular Expr Matching: 2-D DP on string + pattern"], problems:["Unique Paths","Longest Common Subsequence","Coin Change II","Target Sum","Interleaving String","Distinct Subsequences","Edit Distance","Burst Balloons","Regular Expression Matching"], tip:"State depends on two indices (i,j)? That's 2-D DP. Fill row by row." },
-  { id:"greedy", name:"Greedy", cat:"Greedy & decisions", when:"Local optimal choice is permanently safe — no backtracking needed", signals:["reachability","local choice stays optimal","one pass with best-so-far","interval scheduling","maximize by always picking best"], tricks:["Prove greedy is safe before coding — ask 'does local optimal hurt global?'","Jump Game: track farthest reachable, O(n) one pass","Gas Station: if total gas >= total cost, solution exists"], hybrids:["Interval scheduling: sort + greedy is classic","Dijkstra is greedy + heap","Task Scheduler: greedy frequency sort"], problems:["Maximum Subarray","Jump Game","Jump Game II","Gas Station","Partition Labels","Merge Triplets","Valid Parenthesis String","Assign Cookies","Candy"], tip:"Greedy is fast but only valid when you can prove a local choice can never hurt you globally." },
-  { id:"intervals", name:"Intervals", cat:"Greedy & decisions", when:"Overlapping time ranges, merging blocks, or resource allocation over time", signals:["overlapping ranges","meeting rooms","merge time blocks","insert and combine","non-overlapping subset","minimum resources"], tricks:["Sort by start time for merging / insertion","Sort by end time for scheduling (minimize overlaps)","Min rooms = max overlapping meetings at any moment (heap or sweep)"], hybrids:["Meeting Rooms II: interval sort + min-heap","Min Interval per Query: sort + heap + offline processing"], problems:["Insert Interval","Merge Intervals","Non-overlapping Intervals","Meeting Rooms","Meeting Rooms II","Min Interval to Include Query","Employee Free Time"], tip:"Intervals almost always start with sorting by start (for merging) or end (for scheduling)." },
-  { id:"trie", name:"Trie", cat:"String structures", when:"Prefix search, autocomplete, dictionary of words, or wildcard prefix matching", signals:["prefix lookup","autocomplete","dictionary of words","starts with","word search across many words"], tricks:["TrieNode has children dict + isEnd flag","Search vs startsWith differ only in where you check isEnd","Word Search II: build trie of words, DFS on grid"], hybrids:["Word Search II: trie + backtracking","Design Add and Search Words: trie + DFS for '.' wildcard"], problems:["Implement Trie","Design Add and Search Words","Word Search II","Replace Words","Longest Word in Dictionary"], tip:"Trie shines when you have many words and need prefix operations. Single-word checks — just use a set." },
-  { id:"bits", name:"Bit manipulation", cat:"Math & bits", when:"Unique item among duplicates, count set bits, XOR cancels pairs, no-extra-space tricks", signals:["exactly one unique","count set bits","XOR property","no extra space","sum without addition","missing number"], tricks:["a XOR a = 0, a XOR 0 = a — pairs cancel","n & (n-1) clears lowest set bit — use to count bits","Missing number in 0..n: XOR all indices and values"], hybrids:["Sum of Two Integers: bit simulation of full adder","Counting Bits: DP + bit trick dp[i] = dp[i>>1] + (i&1)"], problems:["Single Number","Number of 1 Bits","Counting Bits","Reverse Bits","Missing Number","Sum of Two Integers","Single Number II","Subsets (bitmask)"], tip:"XOR is the go-to for 'find unique among pairs'. Bit shifts for fast divide/multiply by 2." },
-  { id:"math", name:"Math & geometry", cat:"Math & bits", when:"Matrix transform, spiral traversal, coordinate geometry, or arithmetic without built-ins", signals:["rotate matrix","spiral order","set matrix zeroes","detect squares","multiply large numbers","happy number","power function"], tricks:["Rotate 90: transpose then reverse rows","Spiral: track boundaries (top/bottom/left/right), shrink each pass","Happy Number: Floyd cycle detection on digit-sum sequence"], hybrids:["Pow(x,n): fast exponentiation (divide and conquer)","Multiply Strings: grade-school multiplication on arrays"], problems:["Rotate Image","Spiral Matrix","Set Matrix Zeroes","Happy Number","Plus One","Pow(x,n)","Multiply Strings","Detect Squares"], tip:"Matrix rotations and spirals are simulation problems — track your boundaries carefully." },
+  {
+    id:"hash", name:"Hash map / set", cat:"Lookup & grouping",
+    when:"You need O(1) average lookup, counting, or grouping",
+    signals:["duplicates","frequency counting","membership check","group by key","find complement in O(1)"],
+    tricks:["Two Sum: store seen values and look up complement","Anagram: sort key or char-count key","Prefix+hash for subarray-sum problems"],
+    hybrids:["Top K Frequent → hash + heap","Min Window Substring → sliding window + hash","Group Anagrams → hash with sorted key"],
+    problems:["Two Sum","Contains Duplicate","Valid Anagram","Group Anagrams","Top K Frequent","Valid Sudoku","Longest Consecutive Sequence","Product of Array Except Self"],
+    tip:"If the problem says 'O(1) lookup' or 'without sorting', think hash first.",
+    questions:[
+      { q:"Do I need to look something up in O(1)?", hints:["complement of a value?","has this been seen before?","what's the count of X?"] },
+      { q:"What am I storing in the map?", hints:["value → index (Two Sum)","char → frequency (anagram)","key → group (Group Anagrams)","prefix sum → index (subarray sum)"] },
+      { q:"What is the key, and what is the value?", hints:["key: the thing you'll look up later","value: the info you need when you find it"] },
+      { q:"Do I need a set (membership) or a map (data)?", hints:["set: just need 'have I seen this?'","map: need to retrieve something when found"] },
+      { q:"Is there a grouping or equivalence class?", hints:["group by sorted string → anagram","group by tuple → sudoku box","group by remainder → two sum variant"] },
+    ],
+    checklist:["Identify what you need to look up or count","Choose key and value for the map","Decide: set (membership) vs map (stored data)","Iterate and populate, then query","Handle edge cases: missing key, empty input"]
+  },
+  {
+    id:"twoptr", name:"Two pointers", cat:"Array / sorting",
+    when:"Sorted array, pair/triplet sum, palindrome, or optimize from both ends",
+    signals:["sorted input","pair sum","triplet sum","palindrome check","shrink from both ends","no extra space"],
+    tricks:["Sort first, then move pointers inward","3Sum: fix one, two-pointer on the rest","Trapping water: track running max from both sides"],
+    hybrids:["Binary search is two pointers on sorted arrays","Merge sorted lists uses two pointers","Container With Most Water: greedy choice + two pointers"],
+    problems:["Valid Palindrome","Two Sum II","3Sum","Container With Most Water","Trapping Rain Water","Remove Duplicates","Sort Colors"],
+    tip:"'Sorted + pairs/triples + no extra space' almost always means two pointers.",
+    questions:[
+      { q:"Is the array sorted, or can I sort it?", hints:["sorting costs O(n log n) — often worth it","if order matters for the answer, you can't sort"] },
+      { q:"Where do the two pointers start?", hints:["both at the left (fast/slow — different speeds)","one at each end (left=0, right=n-1)","one fixed, one scanning (3Sum outer loop)"] },
+      { q:"What condition moves each pointer?", hints:["sum too small → move left pointer right","sum too large → move right pointer left","palindrome mismatch → done, not palindrome"] },
+      { q:"When do I stop?", hints:["when left >= right (they cross)","when a condition is definitively met or broken"] },
+      { q:"Do I need to skip duplicates?", hints:["3Sum and 4Sum: skip duplicate values after moving","use while(left < right && arr[left]==arr[left-1]) left++"] },
+    ],
+    checklist:["Confirm input is sorted (or sort it)","Decide pointer start positions","Define move condition for each pointer","Define the stop condition (crossing or found)","Handle duplicates if needed"]
+  },
+  {
+    id:"sliding", name:"Sliding window", cat:"Subarray / substring",
+    when:"Contiguous subarray or substring with a dynamic condition",
+    signals:["contiguous subarray","substring","longest/shortest window","at most k distinct","without repeating","contains all of X"],
+    tricks:["Expand right, shrink left when condition breaks","Use a hash map to track window contents","Min/max window: shrink until valid, record answer"],
+    hybrids:["Minimum Window Substring: sliding window + hash map","Top K: may combine with heap if frequency needed"],
+    problems:["Best Time Buy & Sell","Longest Substring Without Repeating","Longest Repeating Char Replacement","Permutation in String","Minimum Window Substring","Sliding Window Maximum"],
+    tip:"Contiguous + dynamic condition = sliding window. Fixed-size windows are easier; variable-size need shrink logic.",
+    questions:[
+      { q:"Is the answer based on a contiguous segment?", hints:["if no: probably not sliding window","subarrays and substrings are always contiguous"] },
+      { q:"What makes a window valid or invalid?", hints:["sum <= k? distinct chars <= k? all required chars present?","this is the most important question to answer first"] },
+      { q:"What do I need to track inside the window?", hints:["sum (numeric array)","frequency map (string problems)","distinct count","max frequency (character replacement)"] },
+      { q:"When do I move the left pointer?", hints:["only when the window becomes invalid","or when shrinking a valid window to find minimum"] },
+      { q:"When do I update the answer?", hints:["longest: after every valid window expansion","shortest: while shrinking a valid window","counting: based on number of valid start/end positions"] },
+    ],
+    checklist:["Confirm the answer is about a contiguous segment","Define window validity condition","Choose tracking structure (sum, map, count)","Expand right pointer always","Shrink left when invalid (or to minimize)","Update answer at the correct moment"]
+  },
+  {
+    id:"stack", name:"Stack / monotonic stack", cat:"Stack & next-greater",
+    when:"Bracket matching, undo order, next greater/smaller, or pending resolution",
+    signals:["matching brackets","evaluate expression","next warmer day","next greater element","largest rectangle","undo/reverse evaluation"],
+    tricks:["Monotonic stack: pop while top <= current (next greater) or >= (next smaller)","Min Stack: keep a parallel min-tracking stack","Histogram: pop and compute area on each taller bar"],
+    hybrids:["Car Fleet: sort by position, stack arrival times","Evaluate RPN: pure stack, no monotonic trick needed"],
+    problems:["Valid Parentheses","Min Stack","Evaluate Reverse Polish Notation","Daily Temperatures","Car Fleet","Largest Rectangle in Histogram","Asteroid Collision","Remove K Digits"],
+    tip:"'When will this be resolved?' is the stack instinct. Push, process later, pop when resolved.",
+    questions:[
+      { q:"Is there something I can't resolve yet and need to revisit?", hints:["open bracket waiting for its close","element waiting for something larger to appear","expression waiting for next operator"] },
+      { q:"Is this a plain stack or a monotonic stack?", hints:["plain: brackets, undo, RPN evaluation","monotonic: next greater/smaller, largest rectangle, span"] },
+      { q:"What order does the monotonic stack maintain?", hints:["increasing stack → pop when current > top (next greater)","decreasing stack → pop when current < top (next smaller)"] },
+      { q:"What do I do when I pop?", hints:["record 'next greater = current element'","compute area using popped height and current width","resolve the pending bracket or operation"] },
+      { q:"What remains in the stack at the end?", hints:["elements with no next greater: answer is -1 or 0","unmatched brackets: invalid input"] },
+    ],
+    checklist:["Identify if elements need deferred resolution","Choose plain vs monotonic stack","For monotonic: define increasing or decreasing order","Decide what to push (index vs value — usually index)","Define the pop condition and what to compute on pop","Handle remaining stack elements after the loop"]
+  },
+  {
+    id:"binsearch", name:"Binary search", cat:"Sorted / monotonic",
+    when:"Sorted data, rotated sorted array, or find min/max valid answer",
+    signals:["sorted array","search rotated array","minimum X that satisfies","maximum X still valid","monotonic feasibility","answer space is numeric"],
+    tricks:["Binary search on the answer, not the array","left mid = (lo+hi)//2, right mid = (lo+hi+1)//2","For feasibility: define a predicate and binary search on it"],
+    hybrids:["Koko Bananas: binary search on rate + greedy feasibility","Time Based KV: binary search on timestamps"],
+    problems:["Binary Search","Search 2D Matrix","Search Rotated Sorted Array","Find Min Rotated","Koko Eating Bananas","Capacity to Ship","Median of Two Sorted Arrays","Split Array Largest Sum"],
+    tip:"'Smallest/largest valid value' is the binary-search-on-answer signal. Define predicate then search.",
+    questions:[
+      { q:"Is the search space sorted or monotonic?", hints:["sorted array: classic binary search","answer space: 'smallest X where condition holds' is monotonic"] },
+      { q:"Am I searching for a value in an array, or searching for an answer?", hints:["array search: lo=0, hi=n-1, target exists in array","answer search: lo=min possible, hi=max possible, check feasibility"] },
+      { q:"What is my predicate (true/false condition)?", hints:["'can I ship packages with capacity X in D days?'","'can Koko eat all bananas at rate X?'","predicate must be monotonic: false...false...true...true"] },
+      { q:"Do I want the leftmost or rightmost valid position?", hints:["leftmost (minimum): when true, go left (hi=mid)","rightmost (maximum): when true, go right (lo=mid)"] },
+      { q:"How do I avoid infinite loops?", hints:["leftmost: mid = (lo+hi)//2","rightmost: mid = (lo+hi+1)//2 to avoid lo==mid stall","always ensure lo and hi converge"] },
+    ],
+    checklist:["Identify the search space (array or answer range)","Define the predicate (what does 'valid' mean?)","Confirm predicate is monotonic","Set lo and hi boundaries","Choose left-mid or right-mid based on leftmost vs rightmost","Verify loop terminates and result is correct"]
+  },
+  {
+    id:"heap", name:"Heap / priority queue", cat:"Top-K & streams",
+    when:"Top-k, kth element, repeated min/max extraction, or stream of values",
+    signals:["top k","kth largest","kth smallest","stream of values","repeatedly take min/max","schedule by priority"],
+    tricks:["Min-heap of size k gives top-k (pop when > k)","Two heaps for running median: max-heap left, min-heap right","Task Scheduler: greedy + max-heap on frequency"],
+    hybrids:["Meeting Rooms II: heap + interval sorting","Top K Frequent: hash + heap or bucket sort","Dijkstra: heap + graph"],
+    problems:["Kth Largest in Stream","Last Stone Weight","K Closest Points","Kth Largest in Array","Task Scheduler","Find Median from Data Stream","Merge K Sorted Lists","IPO"],
+    tip:"'Keep only the best k seen so far' = min-heap of size k.",
+    questions:[
+      { q:"Do I need the top-k, or the kth element?", hints:["top-k: maintain a heap of size k","kth largest: min-heap of size k, root is answer","kth smallest: max-heap of size k, root is answer"] },
+      { q:"Min-heap or max-heap?", hints:["top-k largest: min-heap (pop the smallest intruder)","top-k smallest: max-heap (pop the largest intruder)","always smallest-first? min-heap. always largest-first? max-heap"] },
+      { q:"Is this a streaming problem (values arrive one by one)?", hints:["yes: push each value, pop if heap exceeds k","Find Median: two heaps, rebalance on each insert"] },
+      { q:"Am I doing repeated min/max extraction?", hints:["yes: heap is better than sorting each time","Dijkstra, Prim, Huffman all use this pattern"] },
+      { q:"Do I need the heap size to stay exactly k?", hints:["if heap.size() > k: pop (remove the unwanted extreme)","after all inserts: heap contains the k best elements"] },
+    ],
+    checklist:["Decide: top-k, kth element, or repeated extraction","Choose min-heap or max-heap","For top-k: push element, pop if size > k","For streaming median: two heaps, balance after each insert","For scheduling: push all, extract greedily","Return heap root or sorted heap contents"]
+  },
+  {
+    id:"linkedlist", name:"Linked list", cat:"Pointer manipulation",
+    when:"Reverse links, merge, cycle detection, nth-from-end, or reorder nodes",
+    signals:["reverse a list","merge two lists","detect cycle","nth from end","reorder nodes","no extra space"],
+    tricks:["Dummy head node avoids edge cases on head changes","Fast/slow pointers: slow at midpoint when fast hits end","Cycle start: reset one pointer to head after meeting"],
+    hybrids:["Find Duplicate Number: Floyd cycle detection on array indices","Merge K Sorted Lists: heap + list pointers"],
+    problems:["Reverse Linked List","Merge Two Sorted Lists","Remove Nth Node","Linked List Cycle","Reorder List","Add Two Numbers","LRU Cache","Find Duplicate"],
+    tip:"'Cycle' or 'middle' = fast/slow pointers. 'Nth from end' = two pointers with n-gap.",
+    questions:[
+      { q:"Do I need a dummy head node?", hints:["yes if the head itself might be removed or changed","dummy.next = head, return dummy.next at the end"] },
+      { q:"Is this a fast/slow pointer problem?", hints:["find middle: slow moves 1, fast moves 2","detect cycle: they meet inside the cycle","find cycle start: reset one to head after meeting"] },
+      { q:"Do I need to reverse in-place?", hints:["track prev, curr, next before overwriting","iterate: next=curr.next, curr.next=prev, prev=curr, curr=next"] },
+      { q:"Is this nth-from-end?", hints:["advance first pointer n steps","then move both until first reaches end","second pointer is now at nth from end"] },
+      { q:"What edge cases exist?", hints:["empty list","single node","even vs odd length for middle","n equals length of list for removal"] },
+    ],
+    checklist:["Decide if dummy head simplifies edge cases","Identify: reverse, cycle, merge, nth, or reorder","For cycle: fast/slow (2x speed)","For nth-from-end: two pointers with n-step gap","For reverse: track prev/curr/next triple","Test: empty list, single node, even/odd length"]
+  },
+  {
+    id:"trees", name:"DFS / BFS (trees)", cat:"Tree traversal",
+    when:"Tree path, height, subtree property, level traversal, or BST behavior",
+    signals:["parent/child hierarchy","subtree","depth/height","root-to-leaf path","ancestor","level-by-level","BST sorted property"],
+    tricks:["Inorder traversal of BST gives sorted order","DFS for path/height/subtree, BFS for level order","LCA: recurse left+right, return node when both sides found"],
+    hybrids:["Serialize/deserialize: BFS + queue","Kth smallest BST: inorder count","Trie is a tree with character edges"],
+    problems:["Invert Binary Tree","Max Depth","Same Tree","Subtree of Another","Level Order Traversal","Right Side View","Validate BST","Kth Smallest BST","Lowest Common Ancestor","Path Sum"],
+    tip:"Level order = BFS. Path/height/subtree = DFS. BST property = inorder or binary search recursion.",
+    questions:[
+      { q:"Do I need level-by-level or depth-first?", hints:["level order, right side view, zigzag → BFS with a queue","path, height, subtree match, LCA → DFS recursion"] },
+      { q:"What does my recursive function return?", hints:["a boolean (is this subtree valid?)","an integer (height, count, sum)","a node (LCA, found node)","null = not found, node = found"] },
+      { q:"Is this a BST? Can I exploit sorted order?", hints:["inorder traversal gives ascending order","validate: left < node < right (pass min/max bounds down)","search: go left if target < node, right if target > node"] },
+      { q:"Am I solving something for each subtree independently?", hints:["yes: post-order DFS — solve children first, combine at parent","diameter, max path sum, balanced check all use post-order"] },
+      { q:"What is my base case?", hints:["null node: return 0, true, or null depending on problem","leaf node: return its value or a boundary condition"] },
+    ],
+    checklist:["Choose DFS (path/height/subtree) or BFS (level order)","Define what the recursive call returns","Write the base case for null (and leaf if needed)","Decide traversal order: pre/in/post-order","For BST: pass min/max bounds or use inorder property","Combine left and right results at the current node"]
+  },
+  {
+    id:"graph", name:"DFS / BFS (graphs)", cat:"Graph traversal",
+    when:"Connected components, reachability, island counting, dependencies, or cycle detection",
+    signals:["islands/connected components","neighbors/adjacency","grid traversal","reachability","prerequisites","cycle in graph"],
+    tricks:["Track visited set to avoid revisiting","BFS for unweighted shortest path","Topological sort: Kahn's (BFS) or DFS post-order"],
+    hybrids:["Course Schedule: topo sort + cycle detection","Rotting Oranges: multi-source BFS","Clone Graph: BFS + hash map for cloning"],
+    problems:["Number of Islands","Clone Graph","Max Area of Island","Pacific Atlantic","Surrounded Regions","Rotting Oranges","Course Schedule","Course Schedule II","Redundant Connection","Word Ladder"],
+    tip:"Unweighted shortest path = BFS. Connectivity/components = DFS or BFS. Prerequisites/ordering = topological sort.",
+    questions:[
+      { q:"Do I need shortest path or just reachability?", hints:["shortest path (unweighted) → BFS","reachability / connectivity → DFS or BFS, both work"] },
+      { q:"How do I represent the graph?", hints:["adjacency list: edges[u].append(v)","grid: up/down/left/right neighbors","implicit: generate neighbors on the fly (Word Ladder)"] },
+      { q:"How do I avoid revisiting nodes?", hints:["visited set or visited array","for grids: mark cell as '#' or -1 in-place","for Kahn's topo: track in-degree, not visited"] },
+      { q:"Is this a topological sort (ordering with dependencies)?", hints:["directed graph, no cycle, need order → topo sort","Kahn's: repeatedly remove nodes with in-degree 0","DFS post-order: add to result after all neighbors done"] },
+      { q:"Is this a connected components problem?", hints:["count: one DFS/BFS per unvisited node, increment counter","Union-Find can also work for offline connectivity queries"] },
+    ],
+    checklist:["Build or identify the graph representation","Choose BFS (shortest path) or DFS (connectivity, topo)","Initialize visited structure","For grids: define 4-directional (or 8) neighbors","Run traversal from each unvisited starting node","For topo sort: track in-degrees, use a queue"]
+  },
+  {
+    id:"advgraph", name:"Advanced graphs", cat:"Graph traversal",
+    when:"Weighted shortest path, cheapest route, MST, or ordering from rules",
+    signals:["weighted shortest path","cheapest flights","minimum spanning tree","connect all points","reconstruct order","alien dictionary"],
+    tricks:["Dijkstra: min-heap, relax neighbors, visited set","Bellman-Ford for negative weights or k-hop constraints","Union-Find for MST (Kruskal) or redundant edges"],
+    hybrids:["Cheapest Flights K Stops: Bellman-Ford k rounds","Swim Rising Water: Dijkstra or binary search + BFS"],
+    problems:["Network Delay Time","Cheapest Flights K Stops","Min Cost Connect Points","Reconstruct Itinerary","Alien Dictionary","Swim in Rising Water"],
+    tip:"Unweighted = BFS. Weighted positive = Dijkstra. Negative/k-hop = Bellman-Ford. Connect all = Kruskal/Prim.",
+    questions:[
+      { q:"Are edge weights positive, negative, or zero?", hints:["all positive → Dijkstra (greedy + min-heap)","negative weights present → Bellman-Ford","zero weights → BFS still works (0-1 BFS or deque)"] },
+      { q:"Do I need shortest path or minimum spanning tree?", hints:["shortest path (one source to others) → Dijkstra","connect all nodes with minimum total weight → Kruskal or Prim"] },
+      { q:"Is there a constraint on number of edges used?", hints:["at most k stops/hops → Bellman-Ford (run k rounds)","or modified Dijkstra tracking hop count as state"] },
+      { q:"Do I need to detect or avoid cycles?", hints:["Union-Find: find(u)==find(v) means cycle","DFS with color states: white/gray/black for directed cycle"] },
+      { q:"Is this an ordering problem (reconstruct sequence)?", hints:["Reconstruct Itinerary → Hierholzer's Eulerian path","Alien Dictionary → topological sort on character order"] },
+    ],
+    checklist:["Identify: shortest path, MST, or ordering","Check edge weight signs (positive → Dijkstra, negative → Bellman-Ford)","For Dijkstra: min-heap of (cost, node), relax neighbors","For Kruskal: sort edges by weight, Union-Find for cycle check","For k-hop constraint: Bellman-Ford with k iterations","For ordering: build char graph, topological sort"]
+  },
+  {
+    id:"backtrack", name:"Backtracking", cat:"Combinatorics",
+    when:"All combinations, subsets, permutations, or valid placements",
+    signals:["all subsets","all combinations","all permutations","all valid boards","return all possible...","choose then recurse then undo"],
+    tricks:["Sort input to prune duplicates early","Pass start index for combinations, used[] for permutations","Prune early: if remaining sum < 0 or invalid state"],
+    hybrids:["Word Search II: trie + backtracking","Palindrome Partitioning: backtrack + DP for isPalin check","N-Queens: backtrack + O(1) column/diagonal sets"],
+    problems:["Subsets","Combination Sum","Permutations","Subsets II","Combination Sum II","Word Search","Palindrome Partitioning","N-Queens","Letter Combos Phone"],
+    tip:"'Return ALL possible ...' is the backtracking signal. Think: choose, explore, unchoose.",
+    questions:[
+      { q:"What is one 'choice' at each step?", hints:["pick next element from remaining candidates","place a queen in a row","choose a character from phone digit mapping"] },
+      { q:"What is the base case (when do I record a result)?", hints:["when path length == target length","when sum == target","when all rows are filled (N-Queens)"] },
+      { q:"How do I avoid duplicates?", hints:["combinations: pass start index, only pick elements at start or after","permutations: use a boolean used[] array","duplicate elements: sort first, skip if arr[i]==arr[i-1] and !used[i-1]"] },
+      { q:"Can I prune early?", hints:["remaining sum < 0 → return","current path already exceeds target length → return","cell already visited (Word Search) → return"] },
+      { q:"Do I undo my choice after recursing?", hints:["yes: path.pop() after the recursive call","for grids: restore cell value after marking as visited","this is the 'backtrack' step — never skip it"] },
+    ],
+    checklist:["Define the choice at each step","Define the base case (when to record result)","Sort input if duplicates need skipping","Pass start index (combinations) or used[] (permutations)","Add pruning conditions before recursing","Always undo choice after recursive call (backtrack step)"]
+  },
+  {
+    id:"dp1d", name:"1-D dynamic programming", cat:"Dynamic programming",
+    when:"Best answer up to index i, count ways, take/skip decision, overlapping subproblems",
+    signals:["count ways","at each index choose one of few options","subproblems repeat","optimize over prefix","can/can't reach"],
+    tricks:["Define dp[i] clearly before coding","Climbing Stairs = Fibonacci","House Robber: dp[i] = max(dp[i-1], dp[i-2]+nums[i])","Coin Change: BFS on amounts or bottom-up DP"],
+    hybrids:["Word Break: DP + set lookup","LIS: patience sort or DP + binary search for O(n log n)","Decode Ways: DP + string parsing"],
+    problems:["Climbing Stairs","Min Cost Climbing Stairs","House Robber","House Robber II","Decode Ways","Coin Change","Word Break","LIS","Max Product Subarray","Partition Equal Subset Sum"],
+    tip:"'At each index, best choice depends only on a few previous states' = 1-D DP.",
+    questions:[
+      { q:"What does dp[i] represent exactly?", hints:["write this in English before coding anything","'minimum cost to reach step i'","'number of ways to decode s[0..i]'","'maximum sum of non-adjacent elements up to index i'"] },
+      { q:"What are my choices at each step?", hints:["take it or skip it (House Robber)","use this coin or don't (Coin Change)","extend from any previous index (LIS)"] },
+      { q:"What is my base case?", hints:["dp[0] = ? (empty input, or first element)","dp[1] = ? (often trivial)","make sure base cases cover all initial states"] },
+      { q:"What is my recurrence relation?", hints:["dp[i] = max(dp[i-1], dp[i-2] + nums[i])","dp[i] = dp[i-1] + dp[i-2] (climbing stairs)","dp[i] = min(dp[i-c]+1 for each coin c)"] },
+      { q:"Can I reduce space from O(n) to O(1)?", hints:["if dp[i] only depends on dp[i-1] and dp[i-2]: use two variables","rolling array optimization: common in DP"] },
+    ],
+    checklist:["Write dp[i] definition in plain English","Identify all choices at each index","Write base cases explicitly","Derive recurrence from the choices","Fill bottom-up (i=0 to n)","Check if space can be reduced to O(1)"]
+  },
+  {
+    id:"dp2d", name:"2-D dynamic programming", cat:"Dynamic programming",
+    when:"Two strings, two indices, grid states, or interval-based choices",
+    signals:["two strings","edit/match/interleave strings","grid path count","state depends on (i,j)","interval DP","partition array"],
+    tricks:["LCS: dp[i][j] = dp[i-1][j-1]+1 if match, else max(...)","Edit Distance: insert/delete/replace at each cell","Unique Paths: dp[i][j] = dp[i-1][j] + dp[i][j-1]"],
+    hybrids:["Burst Balloons: interval DP (think 'last balloon to pop')","Regular Expr Matching: 2-D DP on string + pattern"],
+    problems:["Unique Paths","Longest Common Subsequence","Coin Change II","Target Sum","Interleaving String","Distinct Subsequences","Edit Distance","Burst Balloons","Regular Expression Matching"],
+    tip:"State depends on two indices (i,j)? That's 2-D DP. Fill row by row.",
+    questions:[
+      { q:"What do the two dimensions represent?", hints:["i = position in string 1, j = position in string 2","i = row, j = column (grid problems)","i = left bound, j = right bound (interval DP)"] },
+      { q:"What does dp[i][j] mean exactly?", hints:["'length of LCS of s1[0..i] and s2[0..j]'","'min edits to turn s1[0..i] into s2[0..j]'","write this before touching code"] },
+      { q:"What happens when characters match vs don't match?", hints:["LCS match: dp[i][j] = dp[i-1][j-1] + 1","LCS no match: dp[i][j] = max(dp[i-1][j], dp[i][j-1])","Edit distance: match → dp[i-1][j-1], else 1 + min(insert, delete, replace)"] },
+      { q:"What is the fill order?", hints:["most 2-D DP: fill row by row, left to right","interval DP: fill by increasing interval length","ensure dependencies are filled before the current cell"] },
+      { q:"Where is the final answer?", hints:["usually dp[n][m] (bottom-right corner)","sometimes max over entire table (LCS variant)","interval DP: dp[0][n-1]"] },
+    ],
+    checklist:["Define what i and j represent","Write dp[i][j] meaning in English","Set up base cases (row 0, column 0)","Define recurrence for match and no-match cases","Fill in correct order (row by row or by interval length)","Read final answer from dp[n][m] or dp[0][n-1]"]
+  },
+  {
+    id:"greedy", name:"Greedy", cat:"Greedy & decisions",
+    when:"Local optimal choice is permanently safe — no backtracking needed",
+    signals:["reachability","local choice stays optimal","one pass with best-so-far","interval scheduling","maximize by always picking best"],
+    tricks:["Prove greedy is safe before coding — ask 'does local optimal hurt global?'","Jump Game: track farthest reachable, O(n) one pass","Gas Station: if total gas >= total cost, solution exists"],
+    hybrids:["Interval scheduling: sort + greedy is classic","Dijkstra is greedy + heap","Task Scheduler: greedy frequency sort"],
+    problems:["Maximum Subarray","Jump Game","Jump Game II","Gas Station","Partition Labels","Merge Triplets","Valid Parenthesis String","Assign Cookies","Candy"],
+    tip:"Greedy is fast but only valid when you can prove a local choice can never hurt you globally.",
+    questions:[
+      { q:"Can I prove the greedy choice is safe?", hints:["ask: 'does choosing the best thing now ever prevent a better global outcome?'","if you can't prove it, use DP instead","exchange argument: assume optimal differs, show swapping doesn't worsen it"] },
+      { q:"What is the greedy choice at each step?", hints:["always take the largest/smallest available","always extend as far as possible","always process by earliest deadline or end time"] },
+      { q:"What order should I process elements?", hints:["sort by start time (interval merging)","sort by end time (maximize non-overlapping intervals)","sort by ratio (knapsack fractional)"] },
+      { q:"Is this a 'can I reach the end?' type problem?", hints:["Jump Game: track max reachable index","if i > max_reach at any point → impossible","Gas Station: find the starting point where prefix sum never goes negative"] },
+      { q:"What does 'best-so-far' mean in this problem?", hints:["maximum subarray: reset to 0 if current sum goes negative","jump: furthest index reachable so far","task scheduler: highest frequency task remaining"] },
+    ],
+    checklist:["Identify and articulate the greedy choice","Prove (or convince yourself) the local choice is globally safe","Decide if sorting is needed first","Implement one pass, tracking the 'best-so-far' state","Verify with a counterexample attempt","If greedy fails edge cases, switch to DP"]
+  },
+  {
+    id:"intervals", name:"Intervals", cat:"Greedy & decisions",
+    when:"Overlapping time ranges, merging blocks, or resource allocation over time",
+    signals:["overlapping ranges","meeting rooms","merge time blocks","insert and combine","non-overlapping subset","minimum resources"],
+    tricks:["Sort by start time for merging / insertion","Sort by end time for scheduling (minimize overlaps)","Min rooms = max overlapping meetings at any moment (heap or sweep)"],
+    hybrids:["Meeting Rooms II: interval sort + min-heap","Min Interval per Query: sort + heap + offline processing"],
+    problems:["Insert Interval","Merge Intervals","Non-overlapping Intervals","Meeting Rooms","Meeting Rooms II","Min Interval to Include Query","Employee Free Time"],
+    tip:"Intervals almost always start with sorting by start (for merging) or end (for scheduling).",
+    questions:[
+      { q:"What am I trying to do with these intervals?", hints:["merge overlapping ones → sort by start","count conflicts / rooms needed → sort + heap or sweep","remove minimum to make non-overlapping → sort by end, greedy","insert a new interval → find overlap range, merge"] },
+      { q:"Sort by start or end time?", hints:["merging/inserting: sort by start","scheduling / minimize removals: sort by end","room counting: sort by start, track end times in min-heap"] },
+      { q:"How do I detect overlap between two intervals?", hints:["[a,b] and [c,d] overlap if a <= d AND c <= b","no overlap if b < c (first ends before second starts)"] },
+      { q:"How do I merge two overlapping intervals?", hints:["merged = [min(a,c), max(b,d)]","keep extending end = max(current_end, next_end)"] },
+      { q:"For minimum rooms: what does the heap track?", hints:["min-heap of end times of active meetings","if new start >= heap top (earliest end): pop (room freed)","heap size at any point = rooms currently in use"] },
+    ],
+    checklist:["Identify the operation: merge, schedule, count, or insert","Sort by start (merge/insert) or end (schedule/minimize removals)","Iterate through sorted intervals","Check overlap condition: start of next <= end of current","Merge by extending end = max(current, next end)","For rooms: use min-heap of end times, heap size = answer"]
+  },
+  {
+    id:"trie", name:"Trie", cat:"String structures",
+    when:"Prefix search, autocomplete, dictionary of words, or wildcard prefix matching",
+    signals:["prefix lookup","autocomplete","dictionary of words","starts with","word search across many words"],
+    tricks:["TrieNode has children dict + isEnd flag","Search vs startsWith differ only in where you check isEnd","Word Search II: build trie of words, DFS on grid"],
+    hybrids:["Word Search II: trie + backtracking","Design Add and Search Words: trie + DFS for '.' wildcard"],
+    problems:["Implement Trie","Design Add and Search Words","Word Search II","Replace Words","Longest Word in Dictionary"],
+    tip:"Trie shines when you have many words and need prefix operations. Single-word checks — just use a set.",
+    questions:[
+      { q:"Do I need prefix operations across many words?", hints:["single word lookup → just use a set","many words with prefix queries → trie is worth it","autocomplete, startsWith, word search → trie"] },
+      { q:"What does each TrieNode need to store?", hints:["children: dict or array of 26 for lowercase letters","isEnd: marks a complete word","sometimes: the word itself at isEnd for Word Search II"] },
+      { q:"Insert or search — what's different?", hints:["insert: create nodes as you go, set isEnd at last char","search: follow nodes, return false if missing, check isEnd","startsWith: same as search but don't check isEnd"] },
+      { q:"How do I handle wildcard characters?", hints:["'.': try all 26 children recursively","'*': skip zero or more characters (more complex DFS)"] },
+      { q:"Am I doing DFS on a grid while traversing the trie simultaneously?", hints:["Word Search II: move on grid AND advance trie pointer together","prune: if no trie child for grid char, stop DFS branch","optimization: delete word from trie after finding it (avoid duplicates)"] },
+    ],
+    checklist:["Define TrieNode (children dict + isEnd flag)","Implement insert: create nodes, mark isEnd","Implement search: traverse, check isEnd at end","Implement startsWith: traverse, don't check isEnd","For wildcards: branch to all children on '.'","For grid search: DFS on grid + trie traversal simultaneously"]
+  },
+  {
+    id:"bits", name:"Bit manipulation", cat:"Math & bits",
+    when:"Unique item among duplicates, count set bits, XOR cancels pairs, no-extra-space tricks",
+    signals:["exactly one unique","count set bits","XOR property","no extra space","sum without addition","missing number"],
+    tricks:["a XOR a = 0, a XOR 0 = a — pairs cancel","n & (n-1) clears lowest set bit — use to count bits","Missing number in 0..n: XOR all indices and values"],
+    hybrids:["Sum of Two Integers: bit simulation of full adder","Counting Bits: DP + bit trick dp[i] = dp[i>>1] + (i&1)"],
+    problems:["Single Number","Number of 1 Bits","Counting Bits","Reverse Bits","Missing Number","Sum of Two Integers","Single Number II","Subsets (bitmask)"],
+    tip:"XOR is the go-to for 'find unique among pairs'. Bit shifts for fast divide/multiply by 2.",
+    questions:[
+      { q:"Does XOR solve this?", hints:["a XOR a = 0: pairs cancel out","a XOR 0 = a: identity element","XOR all values → only the unpaired one remains (Single Number)"] },
+      { q:"Do I need to count or manipulate individual bits?", hints:["n & (n-1): clears the lowest set bit (count bits by looping)","n & (-n): isolates the lowest set bit","n >> k: divide by 2^k, n << k: multiply by 2^k"] },
+      { q:"Is this a 'missing number in 0..n' pattern?", hints:["XOR indices 0..n with all array values","paired numbers cancel, missing number remains","alternatively: expected_sum - actual_sum"] },
+      { q:"Am I simulating arithmetic without operators?", hints:["sum: XOR gives bits without carry, AND<<1 gives carry","repeat until carry is 0"] },
+      { q:"Can I use a bitmask to represent a subset?", hints:["n elements → 2^n subsets","bit i set = element i is in the subset","iterate: for mask in range(1 << n)"] },
+    ],
+    checklist:["Identify if XOR can cancel duplicates","Check if n&(n-1) or n&(-n) applies","For missing number: XOR indices + values","For arithmetic simulation: XOR (sum) + AND<<1 (carry) loop","For subsets: iterate all 2^n bitmasks","Test with small examples to verify bit logic"]
+  },
+  {
+    id:"math", name:"Math & geometry", cat:"Math & bits",
+    when:"Matrix transform, spiral traversal, coordinate geometry, or arithmetic without built-ins",
+    signals:["rotate matrix","spiral order","set matrix zeroes","detect squares","multiply large numbers","happy number","power function"],
+    tricks:["Rotate 90: transpose then reverse rows","Spiral: track boundaries (top/bottom/left/right), shrink each pass","Happy Number: Floyd cycle detection on digit-sum sequence"],
+    hybrids:["Pow(x,n): fast exponentiation (divide and conquer)","Multiply Strings: grade-school multiplication on arrays"],
+    problems:["Rotate Image","Spiral Matrix","Set Matrix Zeroes","Happy Number","Plus One","Pow(x,n)","Multiply Strings","Detect Squares"],
+    tip:"Matrix rotations and spirals are simulation problems — track your boundaries carefully.",
+    questions:[
+      { q:"Is this a matrix manipulation problem?", hints:["rotate 90° clockwise: transpose (flip diagonally) then reverse each row","set zeroes: first record which rows/cols have zeros, then fill","spiral: shrink four boundary pointers after each traversal direction"] },
+      { q:"Can I simulate the process step by step?", hints:["spiral: go right, down, left, up, shrink bounds, repeat","addition: process digit by digit right to left, track carry","Pow(x,n): halve n each time (fast exponentiation)"] },
+      { q:"Is there a cycle in a mathematical sequence?", hints:["Happy Number: digit-sum eventually reaches 1 or cycles","use Floyd's fast/slow pointer on the digit-sum sequence","or use a seen set to detect revisit"] },
+      { q:"Do I need to avoid modifying input while reading it?", hints:["Set Matrix Zeroes: scan first, store which rows/cols to zero, then update","rotating in-place: do it layer by layer (outer to inner ring)"] },
+      { q:"Is fast exponentiation needed?", hints:["Pow(x,n): if n is even: x^n = (x^2)^(n/2)","if n is odd: x^n = x * x^(n-1)","handle negative n: x^(-n) = 1/x^n"] },
+    ],
+    checklist:["Identify the operation: rotate, spiral, power, or simulate","For rotate: transpose then reverse rows","For spiral: four boundary variables, shrink after each direction","For mathematical sequences: detect cycle with set or fast/slow","For large number arithmetic: use arrays, process right to left","For Pow(x,n): use fast exponentiation, handle negative n"]
+  },
 ];
 
 const CATS = [...new Set(PATTERNS.map(p=>p.cat))];
@@ -367,53 +564,46 @@ const DECIDER_QS = [
 
 let activeFilter = "";
 
-function pal(id){ return PALETTE[id] || {accent:"#888",glow:"rgba(136,136,136,0.15)",bg:"rgba(136,136,136,0.07)",text:"#aaa",tagBorder:"rgba(136,136,136,0.2)"}; }
+function pal(id){ return PALETTE[id]||{accent:"#888",glow:"rgba(136,136,136,0.15)",bg:"rgba(136,136,136,0.07)",text:"#aaa",tagBorder:"rgba(136,136,136,0.2)"}; }
 
 function buildChips(){
   const c = document.getElementById("chips");
   const all = document.createElement("span");
-  all.className = "chip";
-  all.textContent = "All";
-  all.style.cssText = "background:#2a2d3e;color:#e8e9f0;border-color:rgba(255,255,255,0.2)";
-  all.dataset.all = "1";
-  all.onclick = () => setFilter("");
+  all.className="chip"; all.textContent="All"; all.dataset.all="1";
+  all.style.cssText="background:#2a2d3e;color:#e8e9f0;border-color:rgba(255,255,255,0.2)";
+  all.onclick=()=>setFilter("");
   c.appendChild(all);
-  CATS.forEach(cat => {
-    const col = CAT_COLORS[cat] || "#888";
-    const sp = document.createElement("span");
-    sp.className = "chip";
-    sp.textContent = cat;
-    sp.dataset.cat = cat;
-    sp.style.cssText = `border-color:${col}33;color:var(--text2)`;
-    sp.onclick = () => setFilter(cat);
+  CATS.forEach(cat=>{
+    const col=CAT_COLORS[cat]||"#888";
+    const sp=document.createElement("span");
+    sp.className="chip"; sp.textContent=cat; sp.dataset.cat=cat;
+    sp.style.cssText=`border-color:${col}33;color:var(--text2)`;
+    sp.onclick=()=>setFilter(cat);
     c.appendChild(sp);
   });
 }
 
 function setFilter(cat){
-  activeFilter = cat;
-  document.querySelectorAll(".chip").forEach(c => {
+  activeFilter=cat;
+  document.querySelectorAll(".chip").forEach(c=>{
     if(c.dataset.all){
-      if(cat==="") { c.style.cssText="background:#2a2d3e;color:#e8e9f0;border-color:rgba(255,255,255,0.2)"; }
-      else { c.style.cssText="background:var(--bg2);color:var(--text2);border-color:var(--border)"; }
+      c.style.cssText=cat===""?"background:#2a2d3e;color:#e8e9f0;border-color:rgba(255,255,255,0.2)":"background:var(--bg2);color:var(--text2);border-color:var(--border)";
     } else {
-      const cc = CAT_COLORS[c.dataset.cat] || "#888";
-      if(c.dataset.cat===cat){ c.style.cssText=`background:${cc}22;color:${cc};border-color:${cc}66`; }
-      else { c.style.cssText=`border-color:${cc}33;color:var(--text2);background:var(--bg2)`; }
+      const cc=CAT_COLORS[c.dataset.cat]||"#888";
+      c.style.cssText=c.dataset.cat===cat?`background:${cc}22;color:${cc};border-color:${cc}66`:`border-color:${cc}33;color:var(--text2);background:var(--bg2)`;
     }
   });
   filter();
 }
 
 function buildGrid(){
-  const g = document.getElementById("grid");
-  PATTERNS.forEach(p => {
-    const pl = pal(p.id);
-    const card = document.createElement("div");
-    card.className = "card";
-    card.dataset.id = p.id;
-    card.style.cssText = `--accent:${pl.accent};--accent-border:${pl.accent}55;--accent-glow:${pl.glow};--accent-bg:${pl.bg};--accent-text:${pl.text};--accent-tag-border:${pl.tagBorder}`;
-    card.innerHTML = `
+  const g=document.getElementById("grid");
+  PATTERNS.forEach(p=>{
+    const pl=pal(p.id);
+    const card=document.createElement("div");
+    card.className="card"; card.dataset.id=p.id;
+    card.style.cssText=`--accent:${pl.accent};--accent-border:${pl.accent}55;--accent-glow:${pl.glow};--accent-bg:${pl.bg};--accent-text:${pl.text};--accent-tag-border:${pl.tagBorder}`;
+    card.innerHTML=`
       <div class="card-top">
         <div class="dot" style="background:${pl.accent};box-shadow:0 0 8px ${pl.accent}"></div>
         <span class="card-name">${p.name}</span>
@@ -421,49 +611,62 @@ function buildGrid(){
       <div class="card-cat">${p.cat}</div>
       <div class="card-clues">${p.signals.slice(0,3).join(" &middot; ")}</div>
       <div class="card-tags">${p.problems.slice(0,3).map(pr=>`<span class="tag">${pr}</span>`).join("")}</div>`;
-    card.onclick = () => openModal(p);
+    card.onclick=()=>openModal(p);
     g.appendChild(card);
   });
 }
 
 function buildDecider(){
-  const g = document.getElementById("dqgrid");
-  DECIDER_QS.forEach(({q, ans}) => {
-    const b = document.createElement("button");
-    b.className = "dq";
-    const pat = PATTERNS.find(p => p.id===ans || p.id.startsWith(ans));
-    const pl = pat ? pal(pat.id) : {accent:"#888"};
-    b.innerHTML = `<strong>${q}</strong><span style="color:${pl.accent}">${pat ? pat.name : ""}</span>`;
-    b.onclick = () => openModal(PATTERNS.find(p=>p.id===ans||p.id===ans+"1d")||PATTERNS.find(p=>p.id.startsWith(ans)));
+  const g=document.getElementById("dqgrid");
+  DECIDER_QS.forEach(({q,ans})=>{
+    const b=document.createElement("button"); b.className="dq";
+    const pat=PATTERNS.find(p=>p.id===ans||p.id.startsWith(ans));
+    const pl=pat?pal(pat.id):{accent:"#888"};
+    b.innerHTML=`<strong>${q}</strong><span style="color:${pl.accent}">${pat?pat.name:""}</span>`;
+    b.onclick=()=>openModal(PATTERNS.find(p=>p.id===ans||p.id===ans+"1d")||PATTERNS.find(p=>p.id.startsWith(ans)));
     g.appendChild(b);
   });
 }
 
 function filter(){
-  const q = document.getElementById("search").value.toLowerCase();
-  let visible = 0;
-  document.querySelectorAll(".card").forEach(card => {
-    const p = PATTERNS.find(x => x.id===card.dataset.id);
-    const matchCat = !activeFilter || p.cat===activeFilter;
-    const matchQ = !q || (p.name+p.signals.join()+p.problems.join()+p.tricks.join()).toLowerCase().includes(q);
-    card.classList.toggle("hidden", !(matchCat&&matchQ));
-    if(matchCat&&matchQ) visible++;
+  const q=document.getElementById("search").value.toLowerCase();
+  let visible=0;
+  document.querySelectorAll(".card").forEach(card=>{
+    const p=PATTERNS.find(x=>x.id===card.dataset.id);
+    const matchCat=!activeFilter||p.cat===activeFilter;
+    const matchQ=!q||(p.name+p.signals.join()+p.problems.join()+p.tricks.join()).toLowerCase().includes(q);
+    card.classList.toggle("hidden",!(matchCat&&matchQ));
+    if(matchCat&&matchQ)visible++;
   });
-  const em = document.querySelector(".empty");
-  if(em) em.remove();
+  const em=document.querySelector(".empty");
+  if(em)em.remove();
   if(visible===0){
-    const d = document.createElement("div"); d.className="empty"; d.textContent="No patterns match — try a different search.";
+    const d=document.createElement("div"); d.className="empty"; d.textContent="No patterns match — try a different search.";
     document.getElementById("grid").appendChild(d);
   }
-  document.getElementById("count").textContent = `Showing ${visible} of ${PATTERNS.length} patterns`;
-  document.getElementById("decider").style.display = q ? "none" : "";
+  document.getElementById("count").textContent=`Showing ${visible} of ${PATTERNS.length} patterns`;
+  document.getElementById("decider").style.display=q?"none":"";
+}
+
+function switchTab(name, btn){
+  document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("tab-"+name).classList.add("active");
+  btn.classList.add("active");
 }
 
 function openModal(p){
   if(!p) return;
-  const pl = pal(p.id);
-  const col = pl.accent;
-  document.getElementById("modal-content").innerHTML = `
+  const pl=pal(p.id); const col=pl.accent;
+  document.getElementById("modal-inner").style.setProperty("--modal-accent", col);
+
+  // Reset to overview tab
+  document.querySelectorAll(".tab-panel").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("tab-overview").classList.add("active");
+  document.querySelector(".tab-btn").classList.add("active");
+
+  document.getElementById("tab-overview").innerHTML=`
     <div class="modal-header">
       <div class="modal-dot" style="background:${col};box-shadow:0 0 12px ${col}88"></div>
       <div class="modal-title">${p.name}</div>
@@ -476,20 +679,46 @@ function openModal(p){
     <div class="section-label">Common problems</div>
     <div class="prob-list">${p.problems.map(pr=>`<span class="prob-pill" style="border-color:${col}44;color:${pl.text}">${pr}</span>`).join("")}</div>
     ${p.hybrids.length?`<div class="section-label">Hybrid patterns</div>
-    <div class="hybrid-list">${p.hybrids.map(h=>{const[name,...rest]=h.split(":");return`<div class="hybrid-item"><strong>${name}</strong>${rest.length?": "+rest.join(":"):""}</div>`;}).join("")}</div>`:""}
+    <div class="hybrid-list">${p.hybrids.map(h=>{const[n,...r]=h.split(":");return`<div class="hybrid-item"><strong>${n}</strong>${r.length?": "+r.join(":"):""}</div>`;}).join("")}</div>`:""}
     <div class="tip-box" style="border-left-color:${col}">${p.tip}</div>`;
+
+  const qs = p.questions||[];
+  const cl = p.checklist||[];
+  document.getElementById("tab-thinking").innerHTML=`
+    <div class="modal-header">
+      <div class="modal-dot" style="background:${col};box-shadow:0 0 12px ${col}88"></div>
+      <div class="modal-title">How to think: ${p.name}</div>
+    </div>
+    <div class="modal-when">Ask these questions in order when you see a potential match.</div>
+    <div class="q-list">${qs.map((q,i)=>`
+      <div class="q-item">
+        <div class="q-num">Question ${i+1}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-hints">${q.hints.map(h=>`<div class="q-hint">${h}</div>`).join("")}</div>
+      </div>`).join("")}
+    </div>
+    <div class="checklist-box">
+      <div class="checklist-title">Final checklist</div>
+      <div class="checklist-items">${cl.map((item,i)=>`
+        <div class="cl-item">
+          <span class="cl-num">${i+1}</span>
+          <span>${item}</span>
+        </div>`).join("")}
+      </div>
+    </div>`;
+
   document.getElementById("modal").classList.add("open");
 }
 
 function closeModal(e){
-  if(!e || e.target===document.getElementById("modal")){
+  if(!e||e.target===document.getElementById("modal")){
     document.getElementById("modal").classList.remove("open");
   }
 }
 
-document.addEventListener("keydown", e => { if(e.key==="Escape") closeModal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
 buildChips(); buildDecider(); buildGrid();
-document.getElementById("count").textContent = `Showing ${PATTERNS.length} of ${PATTERNS.length} patterns`;
+document.getElementById("count").textContent=`Showing ${PATTERNS.length} of ${PATTERNS.length} patterns`;
 </script>
 </body>
 </html>
